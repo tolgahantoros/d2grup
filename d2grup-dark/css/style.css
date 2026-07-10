@@ -37,6 +37,16 @@ a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 ul{list-style:none}
 
+/* ---- Before / After results grid ---- */
+.ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ba-cell{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line-soft);
+  background:var(--panel);transition:.3s}
+.ba-cell:hover{border-color:var(--gold);transform:translateY(-4px)}
+.ba-cell img{width:100%;height:auto;display:block}
+.ba-caption{text-align:center;color:var(--muted);font-size:13px;letter-spacing:1px;margin-top:22px}
+@media(max-width:768px){.ba-grid{grid-template-columns:1fr 1fr;gap:12px}}
+@media(max-width:480px){.ba-grid{grid-template-columns:1fr}}
+
 /* ---- Real images filling placeholder containers ---- */
 .media-frame > img,
 .detail-main-img > img{
