@@ -319,7 +319,7 @@ h1,h2,h3,h4{line-height:1.04;letter-spacing:-.02em;font-weight:800;text-transfor
 .band-brands{background:var(--ink);color:#fff}
 .band .container-inner{max-width:520px}
 .bottles{display:flex;gap:12px;align-items:flex-end;margin-top:38px;height:180px}
-.cosmetics-img{width:100%;height:auto;max-height:260px;object-fit:contain;object-position:left bottom;margin-top:36px;display:block}
+.cosmetics-img{width:100%;height:auto;border-radius:16px;margin-top:36px;display:block;box-shadow:0 20px 45px rgba(0,0,0,.18)}
 .kozmetik-hero-img{width:100%;height:auto;max-height:340px;object-fit:cover;border-radius:var(--radius-lg);display:block}
 .bottle{
   flex:1;border-radius:8px 8px 10px 10px;background:linear-gradient(160deg,#fff,#d9d9de);
