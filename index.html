@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D2 GRUP — Tasarım Sunumu</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root { --gold: #c9a24b; }
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #0a0a0c;
+    color: #f2f2f2;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+    text-align: center;
+    background-image: radial-gradient(circle at 50% 0%, rgba(201,162,75,.12), transparent 60%);
+  }
+  .logo {
+    font-weight: 800; font-size: 42px; letter-spacing: 2px; margin-bottom: 6px;
+  }
+  .logo span { color: var(--gold); }
+  .tag { color: #9a9a9a; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+  h1 { font-size: clamp(26px, 5vw, 44px); font-weight: 800; margin: 24px 0 8px; text-transform: uppercase; letter-spacing: 1px; }
+  .sub { color: #9a9a9a; max-width: 560px; margin: 0 auto 48px; line-height: 1.6; }
+  .cards { display: flex; gap: 28px; flex-wrap: wrap; justify-content: center; }
+  .card {
+    width: 320px; max-width: 90vw; border-radius: 16px; overflow: hidden;
+    text-decoration: none; color: inherit; border: 1px solid rgba(255,255,255,.1);
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    display: block;
+  }
+  .card:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: 0 20px 50px rgba(0,0,0,.5); }
+  .preview { height: 200px; display: flex; align-items: center; justify-content: center; position: relative; }
+  .dark-prev { background: linear-gradient(135deg, #111 0%, #1a160c 100%); }
+  .dark-prev .mini { color: var(--gold); }
+  .light-prev { background: linear-gradient(135deg, #f4f4f5 0%, #e5e5e7 100%); color: #0e0e10; }
+  .mini { font-weight: 800; font-size: 30px; letter-spacing: 2px; }
+  .card-body { padding: 22px 24px; text-align: left; background: #131317; }
+  .card-body h2 { font-size: 20px; margin-bottom: 6px; }
+  .card-body p { color: #9a9a9a; font-size: 14px; line-height: 1.5; }
+  .go { display: inline-block; margin-top: 16px; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  footer { margin-top: 56px; color: #66666c; font-size: 12px; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+  <div class="tag">Kurumsal Web Sitesi · Tasarım Sunumu</div>
+  <div class="logo">D<span>2</span> GRUP</div>
+  <h1>İki Tasarım, Tek Vizyon</h1>
+  <p class="sub">Güzellik ve estetik merkezlerine ileri teknoloji cihazlar sunan D2 Grup için hazırlanan iki farklı tasarım konsepti. İncelemek istediğiniz temayı seçin.</p>
+
+  <div class="cards">
+    <a class="card" href="d2grup-dark/index.html">
+      <div class="preview dark-prev"><span class="mini">D2</span></div>
+      <div class="card-body">
+        <h2>Koyu / Lüks Tema</h2>
+        <p>Siyah &amp; altın, premium ve prestijli bir atmosfer.</p>
+        <span class="go">Temayı Aç →</span>
+      </div>
+    </a>
+
+    <a class="card" href="d2grup-light/index.html">
+      <div class="preview light-prev"><span class="mini">D2</span></div>
+      <div class="card-body">
+        <h2>Açık / Minimalist Tema</h2>
+        <p>Beyaz &amp; siyah, modern ve editoryal bir yaklaşım.</p>
+        <span class="go">Temayı Aç →</span>
+      </div>
+    </a>
+  </div>
+
+  <footer>© 2024 D2 Grup · Tüm hakları saklıdır.</footer>
+</body>
+</html>
