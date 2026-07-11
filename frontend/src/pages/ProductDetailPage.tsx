@@ -1,0 +1,345 @@
+import { useState } from 'react';
+import { useParams, Navigate, Link } from 'react-router-dom';
+import { motion } from 'motion/react';
+import { Check, ArrowRight, ShieldCheck, Headphones, GraduationCap, FileText, ChevronRight } from 'lucide-react';
+import Breadcrumbs from '../components/layout/Breadcrumbs';
+import ProductCard from '../components/ui/ProductCard';
+import CtaBanner from '../components/sections/CtaBanner';
+import { LinkButton } from '../components/ui/Button';
+import { getProduct, getRelatedProducts } from '../data/products';
+import { getTechnology } from '../data/technologies';
+
+export default function ProductDetailPage() {
+  const { slug } = useParams<{ slug: string }>();
+  const product = slug ? getProduct(slug) : undefined;
+  const [activeImg, setActiveImg] = useState(0);
+  const [activeVariant, setActiveVariant] = useState(0);
+
+  if (!product) return <Navigate to="/urunler" replace />;
+
+  const related = getRelatedProducts(product);
+  const gallery = product.gallery.length ? product.gallery : [product.image];
+
+  const trustBadges = [
+    { icon: ShieldCheck, label: 'Garanti & Sertifika' },
+    { icon: Headphones, label: '7/24 Teknik Servis' },
+    { icon: GraduationCap, label: 'Klinik Eğitim Desteği' },
+  ];
+
+  return (
+    <>
+      {/* Breadcrumb bandı */}
+      <section className="bg-brand-dark pt-28 pb-6 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <Breadcrumbs
+            items={[
+              { label: 'Ürünler', to: '/urunler' },
+              { label: product.categoryLabel, to: `/urunler/kategori/${product.category}` },
+              { label: product.name },
+            ]}
+          />
+        </div>
+      </section>
+
+      {/* Ana ürün bölümü */}
+      <section className="bg-brand-dark pb-20 px-6 md:px-12 border-b border-white/10">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          {/* Galeri */}
+          <div>
+            <motion.div
+              key={activeImg}
+              initial={{ opacity: 0.4 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+              className="aspect-square bg-white rounded-sm overflow-hidden flex items-center justify-center p-10 mb-4"
+            >
+              <img
+                src={gallery[activeImg]}
+                alt={product.name}
+                className="max-h-full max-w-full object-contain mix-blend-multiply"
+              />
+            </motion.div>
+            <div className="grid grid-cols-5 gap-3">
+              {gallery.map((img, i) => (
+                <button
+                  key={img + i}
+                  onClick={() => setActiveImg(i)}
+                  className={`aspect-square bg-white rounded-sm overflow-hidden flex items-center justify-center p-2 border-2 transition-all ${
+                    activeImg === i ? 'border-white' : 'border-transparent opacity-60 hover:opacity-100'
+                  }`}
+                >
+                  <img src={img} alt={`${product.name} önizleme ${i + 1}`} className="max-h-full max-w-full object-contain mix-blend-multiply" />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Bilgi paneli */}
+          <div className="flex flex-col">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="font-mono text-[10px] font-bold tracking-widest text-white/50 uppercase">
+                {product.brand}
+              </span>
+              {product.series && (
+                <span className="bg-white/10 text-white/80 text-[9px] font-bold tracking-widest px-2.5 py-1 uppercase">
+                  {product.series}
+                </span>
+              )}
+              {product.isNew && (
+                <span className="bg-emerald-500 text-white text-[9px] font-bold tracking-widest px-2.5 py-1 uppercase">
+                  YENİ
+                </span>
+              )}
+            </div>
+
+            <h1 className="font-display font-black text-4xl md:text-5xl tracking-tight text-white uppercase leading-none mb-4">
+              {product.name}
+            </h1>
+            <p className="font-sans font-light text-white/70 text-base leading-relaxed mb-8">{product.tagline}</p>
+
+            {/* Öne çıkan özellikler */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+              {product.features.slice(0, 4).map((f) => (
+                <div key={f} className="flex items-start gap-2.5">
+                  <Check size={16} className="text-emerald-400 shrink-0 mt-0.5" />
+                  <span className="font-sans text-white/80 text-xs leading-relaxed">{f}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Varyantlar */}
+            {product.variants && product.variants.length > 0 && (
+              <div className="mb-8">
+                <span className="font-mono text-[10px] tracking-widest text-white/50 uppercase font-bold block mb-3">
+                  KONFİGÜRASYON
+                </span>
+                <div className="flex flex-wrap gap-3">
+                  {product.variants.map((v, i) => (
+                    <button
+                      key={v.name}
+                      onClick={() => setActiveVariant(i)}
+                      className={`flex flex-col items-start px-4 py-3 border rounded-sm text-left transition-all ${
+                        activeVariant === i
+                          ? 'border-white bg-white/10'
+                          : 'border-white/20 hover:border-white/40'
+                      }`}
+                    >
+                      <span className="font-display font-bold text-xs text-white uppercase tracking-wider">
+                        {v.name}
+                      </span>
+                      {v.note && <span className="font-sans text-[10px] text-white/50 mt-0.5">{v.note}</span>}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Fiyat + CTA */}
+            <div className="bg-zinc-900 border border-white/10 rounded-sm p-6 mb-6">
+              <div className="flex items-end justify-between mb-5 flex-wrap gap-3">
+                <div>
+                  <span className="font-mono text-[10px] tracking-widest text-white/50 uppercase block mb-1">
+                    {product.priceLabel}
+                  </span>
+                  <span className="font-display font-black text-2xl text-white uppercase tracking-tight">
+                    Teklife Özel
+                  </span>
+                  <p className="font-sans text-white/50 text-[11px] mt-1">{product.priceNote}</p>
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <LinkButton to="/iletisim" variant="light" withArrow className="flex-1">
+                  TEKLİF AL
+                </LinkButton>
+                <LinkButton to="/bayi-girisi" variant="outline" className="flex-1">
+                  BAYİ GİRİŞİ
+                </LinkButton>
+              </div>
+            </div>
+
+            {/* Güven rozetleri */}
+            <div className="grid grid-cols-3 gap-3">
+              {trustBadges.map(({ icon: BIcon, label }) => (
+                <div key={label} className="flex flex-col items-center text-center gap-2 bg-white/5 border border-white/10 p-4 rounded-sm">
+                  <BIcon size={18} className="text-white/70" />
+                  <span className="font-sans text-[9px] text-white/60 uppercase tracking-wider leading-tight">{label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Açıklama + kullanım alanları */}
+      <section className="bg-white py-20 px-6 md:px-12 border-b border-zinc-100">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="lg:col-span-2">
+            <span className="font-display font-bold text-xs tracking-[0.3em] text-zinc-500 block mb-4 uppercase">
+              ÜRÜN HAKKINDA
+            </span>
+            <h2 className="font-display font-black text-3xl tracking-tight text-zinc-950 uppercase leading-tight mb-6">
+              {product.name} NEDİR?
+            </h2>
+            <p className="font-sans font-light text-zinc-600 text-sm md:text-base leading-relaxed mb-6">
+              {product.longDescription || product.description}
+            </p>
+
+            {/* Teknoloji etiketleri */}
+            {product.technologies.length > 0 && (
+              <div className="flex flex-wrap gap-2 mb-8">
+                {product.technologies.map((tid) => {
+                  const t = getTechnology(tid);
+                  if (!t) return null;
+                  return (
+                    <Link
+                      key={tid}
+                      to="/teknolojiler"
+                      className="text-[10px] font-bold tracking-widest uppercase text-zinc-700 bg-zinc-100 hover:bg-zinc-950 hover:text-white px-3 py-2 transition-colors"
+                    >
+                      {t.shortTitle}
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* Tüm özellikler */}
+            <div className="bg-zinc-50 border border-zinc-100 rounded-sm p-8">
+              <h3 className="font-display font-bold text-sm tracking-wider text-zinc-950 uppercase mb-5">
+                ÖNE ÇIKAN ÖZELLİKLER
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {product.features.map((f) => (
+                  <div key={f} className="flex items-start gap-3">
+                    <span className="w-6 h-6 rounded-full bg-zinc-950 text-white flex items-center justify-center shrink-0 mt-0.5">
+                      <Check size={13} />
+                    </span>
+                    <span className="font-sans text-zinc-700 text-sm leading-relaxed">{f}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Kullanım alanları */}
+          <div>
+            <div className="bg-zinc-950 text-white rounded-sm p-8 sticky top-28">
+              <h3 className="font-display font-bold text-sm tracking-wider uppercase mb-6">KULLANIM ALANLARI</h3>
+              <ul className="flex flex-col gap-4">
+                {product.indications.map((ind) => (
+                  <li key={ind} className="flex items-center gap-3 pb-4 border-b border-white/10 last:border-0 last:pb-0">
+                    <ChevronRight size={15} className="text-white/40 shrink-0" />
+                    <span className="font-sans text-white/85 text-sm">{ind}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Teknik özellikler */}
+      <section className="bg-zinc-50 py-20 px-6 md:px-12 border-b border-zinc-100">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center gap-3 mb-8">
+            <FileText size={18} className="text-zinc-500" />
+            <h2 className="font-display font-black text-2xl tracking-tight text-zinc-950 uppercase">
+              CİHAZ SPESİFİKASYONLARI
+            </h2>
+          </div>
+          <div className="bg-white border border-zinc-200 rounded-sm overflow-hidden">
+            {product.specs.map((s, i) => (
+              <div
+                key={s.label}
+                className={`flex flex-col sm:flex-row sm:items-center ${i % 2 === 0 ? 'bg-white' : 'bg-zinc-50/60'}`}
+              >
+                <div className="sm:w-1/3 px-6 py-4 font-display font-bold text-[11px] tracking-widest text-zinc-500 uppercase border-b sm:border-b-0 sm:border-r border-zinc-100">
+                  {s.label}
+                </div>
+                <div className="sm:w-2/3 px-6 py-4 font-sans text-sm text-zinc-800 border-b border-zinc-100">
+                  {s.value}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Before / After (varsa) */}
+      {product.beforeAfter && product.beforeAfter.length > 0 && (
+        <section className="bg-white py-20 px-6 md:px-12 border-b border-zinc-100">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <span className="font-display font-bold text-xs tracking-[0.3em] text-zinc-500 block mb-4 uppercase">
+                KLİNİK SONUÇLAR
+              </span>
+              <h2 className="font-display font-black text-3xl md:text-4xl tracking-tight text-zinc-950 uppercase">
+                GÖZLE GÖRÜLÜR FARK
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {product.beforeAfter.map((img, i) => (
+                <motion.div
+                  key={img}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-40px' }}
+                  transition={{ duration: 0.4, delay: (i % 3) * 0.08 }}
+                  className="relative rounded-sm overflow-hidden aspect-[4/3] group"
+                >
+                  <img src={img} alt={`${product.name} öncesi ve sonrası ${i + 1}`} className="w-full h-full object-cover" />
+                  <span className="absolute top-3 left-3 bg-black/70 text-white text-[9px] font-bold tracking-widest uppercase px-2.5 py-1">
+                    Öncesi
+                  </span>
+                  <span className="absolute top-3 right-3 bg-emerald-500 text-white text-[9px] font-bold tracking-widest uppercase px-2.5 py-1">
+                    Sonrası
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+            <p className="font-sans text-zinc-400 text-[11px] text-center mt-8 max-w-2xl mx-auto leading-relaxed">
+              * Sonuçlar kişiden kişiye değişkenlik gösterebilir. Görseller temsili klinik uygulama örnekleridir.
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* Benzer ürünler */}
+      {related.length > 0 && (
+        <section className="bg-zinc-50 py-20 px-6 md:px-12">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-end justify-between mb-10">
+              <div>
+                <span className="font-display font-bold text-xs tracking-[0.3em] text-zinc-500 block mb-3 uppercase">
+                  BENZER ÜRÜNLER
+                </span>
+                <h2 className="font-display font-black text-3xl tracking-tight text-zinc-950 uppercase">
+                  BUNLAR DA İLGİNİZİ ÇEKEBİLİR
+                </h2>
+              </div>
+              <Link
+                to={`/urunler/kategori/${product.category}`}
+                className="hidden sm:inline-flex items-center gap-2 font-display font-bold text-[11px] tracking-widest text-zinc-950 hover:text-zinc-600 uppercase transition-colors"
+              >
+                TÜMÜNÜ GÖR <ArrowRight size={13} />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {related.map((p, i) => (
+                <ProductCard key={p.slug} product={p} index={i} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <CtaBanner
+        eyebrow={product.name}
+        title={<>BU CİHAZ HAKKINDA<br />DAHA FAZLA BİLGİ ALIN</>}
+        description="Demo talebi, klinik protokolleri ve size özel fiyatlandırma için uzman ekibimizle iletişime geçin."
+        primary={{ label: 'TEKLİF AL', to: '/iletisim' }}
+        secondary={{ label: 'TÜM ÜRÜNLER', to: '/urunler' }}
+      />
+    </>
+  );
+}
