@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 import { STATS } from '../../data/site';
 import Icon from '../ui/Icon';
 
-const HERO_IMAGE = '/assets/renders/hero-device.jpg';
+const HERO_IMAGE = 'assets/renders/hero-device.jpg';
 
 interface HeroProps {
   onPlayVideo?: () => void;

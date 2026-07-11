@@ -14,7 +14,7 @@ export default function BrandsPage() {
         title="MARKALAR"
         description="Dünyanın lider medikal estetik üreticileriyle kurduğumuz uzun soluklu iş ortaklıkları. Yerli imzamız FROZEN'dan Lumenis, Fotona ve InMode'a; her marka kanıtlanmış teknoloji ve global güven demektir."
         breadcrumbs={[{ label: 'Markalar' }]}
-        backgroundImage="/assets/renders/device-white-tower.jpg"
+        backgroundImage="assets/renders/device-white-tower.jpg"
       />
 
       {/* Marka wordmark şeridi (logo garisi) */}

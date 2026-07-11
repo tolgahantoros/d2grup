@@ -4,7 +4,7 @@ interface IntroVideoProps {
   onPlay: () => void;
 }
 
-const VIDEO_THUMB = '/assets/renders/hero-device.jpg';
+const VIDEO_THUMB = 'assets/renders/hero-device.jpg';
 
 const POINTS = [
   'FDA ONAYLI PATENTLİ SİSTEMLER',

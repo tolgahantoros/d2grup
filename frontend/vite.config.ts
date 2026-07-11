@@ -5,6 +5,8 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    // Göreli temel yol: site alt-yolda (ör. /d2/) veya kökte sorunsuz çalışır.
+    base: './',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {

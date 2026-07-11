@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, BadgeCheck } from 'lucide-react';
 import { BRANDS } from '../../data/brands';
 
-const COSMETICS_IMAGE = '/assets/renders/cosmetics-set.jpg';
+const COSMETICS_IMAGE = 'assets/renders/cosmetics-set.jpg';
 
 export default function CosmeticsBrands() {
   const brands = BRANDS.slice(0, 5);

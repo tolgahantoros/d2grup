@@ -113,7 +113,7 @@ export default function ProductsPage() {
         title="TÜM ÜRÜNLER"
         description="FROZEN serisinden global markalara; yüz, vücut ve longevity alanlarında ileri medikal estetik cihazlarının tamamı."
         breadcrumbs={[{ label: 'Ürünler' }]}
-        backgroundImage="/assets/renders/device-white-tower.jpg"
+        backgroundImage="assets/renders/device-white-tower.jpg"
       />
 
       <section className="bg-white py-16 px-6 md:px-12">

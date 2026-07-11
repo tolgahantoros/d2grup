@@ -103,7 +103,7 @@ export default function ServicesPage() {
         eyebrow="ÇÖZÜMLER & HİZMETLER"
         title="HİZMETLERİMİZ"
         description="Cihaz tedarikinin ötesinde; danışmanlıktan kuruluma, klinik eğitimden teknik servise kadar uçtan uca hizmetlerle kliniğinizin yanındayız."
-        backgroundImage="/assets/renders/device-grey-diagnostic.jpg"
+        backgroundImage="assets/renders/device-grey-diagnostic.jpg"
         breadcrumbs={[{ label: 'Çözümler' }]}
       />
 

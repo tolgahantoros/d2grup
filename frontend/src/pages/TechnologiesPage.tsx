@@ -14,7 +14,7 @@ export default function TechnologiesPage() {
         title="TEKNOLOJİLER"
         description="Lazerden radyofrekansa, HIFU'dan kriyojenik soğutmaya; D2 Grup portföyünü ayakta tutan patentli enerji temelli teknolojiler. Her platform, kanıtlanmış klinik protokoller ve ölçülebilir sonuçlar için tasarlanır."
         breadcrumbs={[{ label: 'Teknolojiler' }]}
-        backgroundImage="/assets/renders/device-blue-laser.jpg"
+        backgroundImage="assets/renders/device-blue-laser.jpg"
       />
 
       {/* Teknoloji ikonları özet grid'i */}

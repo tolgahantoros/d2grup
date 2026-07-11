@@ -68,7 +68,7 @@ export default function AboutPage() {
         eyebrow="KURUMSAL"
         title="BİZ KİMİZ"
         description="2004'ten bu yana, dünyanın öncü medikal estetik ve güzellik teknolojilerini Türkiye'ye taşıyan D2 Grup; 20+ yıllık deneyimi, yetkin teknik servisi ve klinik eğitim desteğiyle sektörün lider distribütörüdür."
-        backgroundImage="/assets/renders/building.png"
+        backgroundImage="assets/renders/building.png"
         breadcrumbs={[{ label: 'Kurumsal' }]}
       />
 
@@ -115,7 +115,7 @@ export default function AboutPage() {
           >
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm border border-zinc-100 shadow-2xl shadow-black/10">
               <img
-                src="/assets/renders/experience.png"
+                src="assets/renders/experience.png"
                 alt="D2 Grup deneyimi"
                 className="w-full h-full object-cover"
               />
