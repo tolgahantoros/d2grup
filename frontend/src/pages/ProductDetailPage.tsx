@@ -28,10 +28,11 @@ export default function ProductDetailPage() {
 
   return (
     <>
-      {/* Breadcrumb bandı */}
-      <section className="bg-brand-dark pt-28 pb-6 px-6 md:px-12">
+      {/* İnce koyu üst şerit — header'ın okunur kalması için (breadcrumb) */}
+      <section className="bg-brand-dark pt-28 md:pt-32 pb-8 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
           <Breadcrumbs
+            theme="dark"
             items={[
               { label: 'Ürünler', to: '/urunler' },
               { label: product.categoryLabel, to: `/urunler/kategori/${product.category}` },
@@ -41,8 +42,8 @@ export default function ProductDetailPage() {
         </div>
       </section>
 
-      {/* Ana ürün bölümü */}
-      <section className="bg-brand-dark pb-20 px-6 md:px-12 border-b border-white/10">
+      {/* Ana ürün bölümü (açık) */}
+      <section className="bg-white pb-16 pt-12 px-6 md:px-12 border-b border-zinc-100">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Galeri */}
           <div>
@@ -51,7 +52,7 @@ export default function ProductDetailPage() {
               initial={{ opacity: 0.4 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
-              className="aspect-square bg-white rounded-sm overflow-hidden flex items-center justify-center p-10 mb-4"
+              className="aspect-square bg-zinc-50 border border-zinc-100 rounded-sm overflow-hidden flex items-center justify-center p-10 mb-4"
             >
               <img
                 src={gallery[activeImg]}
@@ -64,8 +65,8 @@ export default function ProductDetailPage() {
                 <button
                   key={img + i}
                   onClick={() => setActiveImg(i)}
-                  className={`aspect-square bg-white rounded-sm overflow-hidden flex items-center justify-center p-2 border-2 transition-all ${
-                    activeImg === i ? 'border-white' : 'border-transparent opacity-60 hover:opacity-100'
+                  className={`aspect-square bg-zinc-50 rounded-sm overflow-hidden flex items-center justify-center p-2 border-2 transition-all ${
+                    activeImg === i ? 'border-zinc-950' : 'border-zinc-100 opacity-70 hover:opacity-100'
                   }`}
                 >
                   <img src={img} alt={`${product.name} önizleme ${i + 1}`} className="max-h-full max-w-full object-contain mix-blend-multiply" />
@@ -77,11 +78,11 @@ export default function ProductDetailPage() {
           {/* Bilgi paneli */}
           <div className="flex flex-col">
             <div className="flex items-center gap-3 mb-4">
-              <span className="font-mono text-[10px] font-bold tracking-widest text-white/50 uppercase">
+              <span className="font-mono text-[10px] font-bold tracking-widest text-zinc-400 uppercase">
                 {product.brand}
               </span>
               {product.series && (
-                <span className="bg-white/10 text-white/80 text-[9px] font-bold tracking-widest px-2.5 py-1 uppercase">
+                <span className="bg-zinc-100 text-zinc-700 text-[9px] font-bold tracking-widest px-2.5 py-1 uppercase">
                   {product.series}
                 </span>
               )}
@@ -92,17 +93,19 @@ export default function ProductDetailPage() {
               )}
             </div>
 
-            <h1 className="font-display font-black text-4xl md:text-5xl tracking-tight text-white uppercase leading-none mb-4">
+            <h1 className="font-display font-black text-4xl md:text-5xl tracking-tight text-zinc-950 uppercase leading-none mb-4">
               {product.name}
             </h1>
-            <p className="font-sans font-light text-white/70 text-base leading-relaxed mb-8">{product.tagline}</p>
+            <p className="font-sans font-light text-zinc-600 text-base leading-relaxed mb-8">{product.tagline}</p>
 
             {/* Öne çıkan özellikler */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
               {product.features.slice(0, 4).map((f) => (
                 <div key={f} className="flex items-start gap-2.5">
-                  <Check size={16} className="text-emerald-400 shrink-0 mt-0.5" />
-                  <span className="font-sans text-white/80 text-xs leading-relaxed">{f}</span>
+                  <span className="w-5 h-5 rounded-full bg-zinc-950 text-white flex items-center justify-center shrink-0 mt-0.5">
+                    <Check size={12} />
+                  </span>
+                  <span className="font-sans text-zinc-700 text-xs leading-relaxed">{f}</span>
                 </div>
               ))}
             </div>
@@ -110,7 +113,7 @@ export default function ProductDetailPage() {
             {/* Varyantlar */}
             {product.variants && product.variants.length > 0 && (
               <div className="mb-8">
-                <span className="font-mono text-[10px] tracking-widest text-white/50 uppercase font-bold block mb-3">
+                <span className="font-mono text-[10px] tracking-widest text-zinc-400 uppercase font-bold block mb-3">
                   KONFİGÜRASYON
                 </span>
                 <div className="flex flex-wrap gap-3">
@@ -120,49 +123,52 @@ export default function ProductDetailPage() {
                       onClick={() => setActiveVariant(i)}
                       className={`flex flex-col items-start px-4 py-3 border rounded-sm text-left transition-all ${
                         activeVariant === i
-                          ? 'border-white bg-white/10'
-                          : 'border-white/20 hover:border-white/40'
+                          ? 'border-zinc-950 bg-zinc-50'
+                          : 'border-zinc-200 hover:border-zinc-400'
                       }`}
                     >
-                      <span className="font-display font-bold text-xs text-white uppercase tracking-wider">
+                      <span className="font-display font-bold text-xs text-zinc-900 uppercase tracking-wider">
                         {v.name}
                       </span>
-                      {v.note && <span className="font-sans text-[10px] text-white/50 mt-0.5">{v.note}</span>}
+                      {v.note && <span className="font-sans text-[10px] text-zinc-500 mt-0.5">{v.note}</span>}
                     </button>
                   ))}
                 </div>
               </div>
             )}
 
-            {/* Fiyat + CTA */}
-            <div className="bg-zinc-900 border border-white/10 rounded-sm p-6 mb-6">
-              <div className="flex items-end justify-between mb-5 flex-wrap gap-3">
-                <div>
-                  <span className="font-mono text-[10px] tracking-widest text-white/50 uppercase block mb-1">
-                    {product.priceLabel}
-                  </span>
-                  <span className="font-display font-black text-2xl text-white uppercase tracking-tight">
-                    Teklife Özel
-                  </span>
-                  <p className="font-sans text-white/50 text-[11px] mt-1">{product.priceNote}</p>
+            {/* Fiyat + CTA (koyu vurgu kartı) */}
+            <div className="bg-zinc-950 border border-zinc-900 rounded-sm p-6 mb-6 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-3xl pointer-events-none" />
+              <div className="relative z-10">
+                <div className="flex items-end justify-between mb-5 flex-wrap gap-3">
+                  <div>
+                    <span className="font-mono text-[10px] tracking-widest text-white/50 uppercase block mb-1">
+                      {product.priceLabel}
+                    </span>
+                    <span className="font-display font-black text-2xl text-white uppercase tracking-tight">
+                      Teklife Özel
+                    </span>
+                    <p className="font-sans text-white/50 text-[11px] mt-1">{product.priceNote}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <LinkButton to="/iletisim" variant="light" withArrow className="flex-1">
-                  TEKLİF AL
-                </LinkButton>
-                <LinkButton to="/bayi-girisi" variant="outline" className="flex-1">
-                  BAYİ GİRİŞİ
-                </LinkButton>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <LinkButton to="/iletisim" variant="light" withArrow className="flex-1">
+                    TEKLİF AL
+                  </LinkButton>
+                  <LinkButton to="/bayi-girisi" variant="outline" className="flex-1">
+                    BAYİ GİRİŞİ
+                  </LinkButton>
+                </div>
               </div>
             </div>
 
             {/* Güven rozetleri */}
             <div className="grid grid-cols-3 gap-3">
               {trustBadges.map(({ icon: BIcon, label }) => (
-                <div key={label} className="flex flex-col items-center text-center gap-2 bg-white/5 border border-white/10 p-4 rounded-sm">
-                  <BIcon size={18} className="text-white/70" />
-                  <span className="font-sans text-[9px] text-white/60 uppercase tracking-wider leading-tight">{label}</span>
+                <div key={label} className="flex flex-col items-center text-center gap-2 bg-zinc-50 border border-zinc-100 p-4 rounded-sm">
+                  <BIcon size={18} className="text-zinc-700" />
+                  <span className="font-sans text-[9px] text-zinc-500 uppercase tracking-wider leading-tight">{label}</span>
                 </div>
               ))}
             </div>
@@ -170,8 +176,8 @@ export default function ProductDetailPage() {
         </div>
       </section>
 
-      {/* Açıklama + kullanım alanları */}
-      <section className="bg-white py-20 px-6 md:px-12 border-b border-zinc-100">
+      {/* Açıklama + kullanım alanları (zinc-50) */}
+      <section className="bg-zinc-50 py-20 px-6 md:px-12 border-b border-zinc-100">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2">
             <span className="font-display font-bold text-xs tracking-[0.3em] text-zinc-500 block mb-4 uppercase">
@@ -194,7 +200,7 @@ export default function ProductDetailPage() {
                     <Link
                       key={tid}
                       to="/teknolojiler"
-                      className="text-[10px] font-bold tracking-widest uppercase text-zinc-700 bg-zinc-100 hover:bg-zinc-950 hover:text-white px-3 py-2 transition-colors"
+                      className="text-[10px] font-bold tracking-widest uppercase text-zinc-700 bg-white border border-zinc-200 hover:bg-zinc-950 hover:text-white hover:border-zinc-950 px-3 py-2 transition-colors"
                     >
                       {t.shortTitle}
                     </Link>
@@ -204,7 +210,7 @@ export default function ProductDetailPage() {
             )}
 
             {/* Tüm özellikler */}
-            <div className="bg-zinc-50 border border-zinc-100 rounded-sm p-8">
+            <div className="bg-white border border-zinc-100 rounded-sm p-8">
               <h3 className="font-display font-bold text-sm tracking-wider text-zinc-950 uppercase mb-5">
                 ÖNE ÇIKAN ÖZELLİKLER
               </h3>
@@ -221,7 +227,7 @@ export default function ProductDetailPage() {
             </div>
           </div>
 
-          {/* Kullanım alanları */}
+          {/* Kullanım alanları (koyu vurgu) */}
           <div>
             <div className="bg-zinc-950 text-white rounded-sm p-8 sticky top-28">
               <h3 className="font-display font-bold text-sm tracking-wider uppercase mb-6">KULLANIM ALANLARI</h3>
@@ -238,8 +244,8 @@ export default function ProductDetailPage() {
         </div>
       </section>
 
-      {/* Teknik özellikler */}
-      <section className="bg-zinc-50 py-20 px-6 md:px-12 border-b border-zinc-100">
+      {/* Teknik özellikler (beyaz) */}
+      <section className="bg-white py-20 px-6 md:px-12 border-b border-zinc-100">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-3 mb-8">
             <FileText size={18} className="text-zinc-500" />
@@ -265,9 +271,9 @@ export default function ProductDetailPage() {
         </div>
       </section>
 
-      {/* Before / After (varsa) */}
+      {/* Before / After (varsa) — zinc-50 */}
       {product.beforeAfter && product.beforeAfter.length > 0 && (
-        <section className="bg-white py-20 px-6 md:px-12 border-b border-zinc-100">
+        <section className="bg-zinc-50 py-20 px-6 md:px-12 border-b border-zinc-100">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <span className="font-display font-bold text-xs tracking-[0.3em] text-zinc-500 block mb-4 uppercase">
@@ -285,7 +291,7 @@ export default function ProductDetailPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ duration: 0.4, delay: (i % 3) * 0.08 }}
-                  className="relative rounded-sm overflow-hidden aspect-[4/3] group"
+                  className="relative rounded-sm overflow-hidden aspect-[4/3] group border border-zinc-100"
                 >
                   <img src={img} alt={`${product.name} öncesi ve sonrası ${i + 1}`} className="w-full h-full object-cover" />
                   <span className="absolute top-3 left-3 bg-black/70 text-white text-[9px] font-bold tracking-widest uppercase px-2.5 py-1">
@@ -304,9 +310,9 @@ export default function ProductDetailPage() {
         </section>
       )}
 
-      {/* Benzer ürünler */}
+      {/* Benzer ürünler (beyaz) */}
       {related.length > 0 && (
-        <section className="bg-zinc-50 py-20 px-6 md:px-12">
+        <section className="bg-white py-20 px-6 md:px-12">
           <div className="max-w-7xl mx-auto">
             <div className="flex items-end justify-between mb-10">
               <div>
