@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { apiGet } from '../lib/apiClient';
-import type { Product, Category, Technology, Brand, FaqItem, CategoryId } from '../types';
+import type { Product, Category, Technology, Brand, FaqItem, CategoryId, NavMenuItem } from '../types';
 
 // Statik veriler (fallback — backend erişilemezse veya ilk render'da kullanılır)
 import { PRODUCTS as STATIC_PRODUCTS } from './products';
@@ -9,7 +9,23 @@ import { TECHNOLOGIES as STATIC_TECHNOLOGIES } from './technologies';
 import { BRANDS as STATIC_BRANDS } from './brands';
 import { FAQ as STATIC_FAQ } from './faq';
 import { LEGAL_DOCS as STATIC_LEGAL } from './legal';
-import { SITE as STATIC_SITE, STATS as STATIC_STATS } from './site';
+import { SITE as STATIC_SITE, STATS as STATIC_STATS, NAV as STATIC_NAV } from './site';
+
+// Yönetilen menü ayarını Header'ın beklediği şekle dönüştürür (aktif olanlar).
+function normalizeNav(raw: any): NavMenuItem[] {
+  const arr = Array.isArray(raw) ? raw : Array.isArray(raw?.items) ? raw.items : null;
+  if (!arr || !arr.length) return STATIC_NAV;
+  return arr
+    .filter((i: any) => i && i.active !== false && i.label && i.to)
+    .map((i: any) => ({
+      label: i.label,
+      to: i.to,
+      children: Array.isArray(i.children)
+        ? i.children.filter((c: any) => c && c.active !== false && c.label && c.to).map((c: any) => ({ label: c.label, to: c.to }))
+        : undefined,
+    }))
+    .map((i: any) => ({ ...i, children: i.children && i.children.length ? i.children : undefined }));
+}
 
 interface DataState {
   products: Product[];
@@ -23,6 +39,7 @@ interface DataState {
   home: Record<string, any>;
   about: Record<string, any>;
   stats: typeof STATIC_STATS;
+  nav: NavMenuItem[];
   loading: boolean;
   source: 'api' | 'static';
 }
@@ -39,6 +56,7 @@ const FALLBACK: DataState = {
   home: {},
   about: {},
   stats: STATIC_STATS,
+  nav: STATIC_NAV,
   loading: true,
   source: 'static',
 };
@@ -85,6 +103,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
           home: settings.home ?? {},
           about: settings.about ?? {},
           stats: settings.home?.stats?.length ? settings.home.stats : STATIC_STATS,
+          nav: normalizeNav(settings.nav),
           loading: false,
           source: 'api',
         });

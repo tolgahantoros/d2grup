@@ -13,6 +13,7 @@ import FaqPage from './pages/FaqPage';
 import CosmeticsPage from './pages/CosmeticsPage';
 import ProductsPage from './pages/ProductsPage';
 import HomeSettingsPage from './pages/HomeSettingsPage';
+import MenuPage from './pages/MenuPage';
 import AboutSettingsPage from './pages/AboutSettingsPage';
 import ContactPage from './pages/ContactPage';
 import MessagesPage from './pages/MessagesPage';
@@ -39,6 +40,7 @@ export default function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/" element={<Protected><DashboardPage /></Protected>} />
             <Route path="/anasayfa" element={<Protected><HomeSettingsPage /></Protected>} />
+            <Route path="/menu" element={<Protected><MenuPage /></Protected>} />
             <Route path="/kurumsal" element={<Protected><AboutSettingsPage /></Protected>} />
             <Route path="/urunler" element={<Protected><ProductsPage /></Protected>} />
             <Route path="/kategoriler" element={<Protected><CategoriesPage /></Protected>} />

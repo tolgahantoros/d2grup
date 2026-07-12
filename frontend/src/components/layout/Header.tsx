@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, Globe, Plus, Minus } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { NAV } from '../../data/site';
 import { NavMenuItem } from '../../types';
+import { useData } from '../../data/DataContext';
 import Logo from './Logo';
 
 function isActive(item: NavMenuItem, pathname: string): boolean {
@@ -15,6 +15,7 @@ function isActive(item: NavMenuItem, pathname: string): boolean {
 
 export default function Header() {
   const { pathname } = useLocation();
+  const { nav: NAV } = useData();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);

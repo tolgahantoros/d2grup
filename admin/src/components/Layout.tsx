@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import {
   LayoutDashboard, Home, Building2, Package, FolderTree, Cpu, Award, Sparkles, HelpCircle,
-  Scale, Mail, Handshake, Image, Search, Users, Settings, LogOut, Menu, Phone,
+  Scale, Mail, Handshake, Image, Search, Users, Settings, LogOut, Menu, Phone, Navigation,
 } from 'lucide-react';
 import { useAuth } from '../lib/auth';
 import { AGENCY } from '../lib/brand';
@@ -16,6 +16,7 @@ const NAV: NavGroup[] = [
     title: 'İÇERİK',
     items: [
       { to: '/anasayfa', label: 'Ana Sayfa', icon: Home },
+      { to: '/menu', label: 'Menü Yönetimi', icon: Navigation },
       { to: '/kurumsal', label: 'Kurumsal', icon: Building2 },
       { to: '/urunler', label: 'Ürünler', icon: Package },
       { to: '/kategoriler', label: 'Kategoriler', icon: FolderTree },
