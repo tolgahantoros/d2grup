@@ -5,7 +5,7 @@ import SectionHeading from '../components/ui/SectionHeading';
 import CtaBanner from '../components/sections/CtaBanner';
 import { LinkButton } from '../components/ui/Button';
 import Icon from '../components/ui/Icon';
-import { SITE, STATS } from '../data/site';
+import { STATS } from '../data/site';
 import { asset } from '../lib/asset';
 
 const PILLARS = [
@@ -88,16 +88,26 @@ export default function AboutPage() {
             />
             <div className="mt-6 space-y-5 font-sans font-light text-zinc-600 text-sm md:text-base leading-relaxed max-w-xl">
               <p>
-                {SITE.foundedYear} yılından bu yana faaliyet gösteren {SITE.legalName}, medikal estetik ve güzellik
-                teknolojilerinde uçtan uca çözümler sunan köklü bir distribütördür. Dünyanın en saygın üreticilerinin
-                patentli cihazlarını, kliniklerin ihtiyaçlarına göre kurgulanmış bir portföyle Türkiye pazarına
-                kazandırıyoruz.
+                <span className="font-semibold text-zinc-900">D2 Grup Medikal</span>, medikal cihazlar alanında uzun
+                yıllara dayanan deneyime sahip bir kuruluştur. Müşterilerimize kaliteli ürünler ve güvenilir hizmet
+                sunma misyonuyla yola çıktık. Sektördeki tecrübemiz ve uzman ekibimiz sayesinde, müşterilerimize en iyi
+                çözümleri sunabilmek için sürekli olarak kendimizi geliştirmekteyiz.
               </p>
               <p>
-                Global markaların yerel iş ortağı olarak yalnızca cihaz tedarik etmiyor; yetkin teknik servisimiz,
-                sertifikalı yedek parça güvencemiz ve klinik eğitim programlarımızla kliniklerinizin uzun vadeli
-                başarısını destekliyoruz. İş yaklaşımımız, satıştan sonra da yanınızda olan sürdürülebilir bir ortaklık
-                üzerine kuruludur.
+                Başlangıçta medikal cihazlar alanında başarıyla faaliyet gösterdikten sonra, şimdi de dermo-kozmetik
+                sektöründe aynı kalite ve güven prensipleriyle hizmet vermeye başladık. Medikal alandaki deneyimimizi ve
+                bilgi birikimimizi kozmetik sektörüne aktararak, müşterilerimize yenilikçi ürünler ve etkili çözümler
+                sunmayı hedefliyoruz.
+              </p>
+              <p>
+                D2 Grup Medikal olarak, müşteri memnuniyetini her zaman ön planda tutuyor ve ihtiyaçlarına uygun
+                çözümler sunarak onların güvenini kazanmayı amaçlıyoruz. Profesyonel yaklaşımımız, güçlü iş etiğimiz ve
+                sektördeki lider konumumuzla, müşterilerimize en üst düzeyde hizmet vermeye devam edeceğiz.
+              </p>
+              <p>
+                Sizin için en iyisini sunmak için sürekli olarak araştırma ve geliştirme çalışmalarını sürdürüyoruz. D2
+                Grup Medikal olarak, geleceğe yönelik yenilikçi adımlar atarak sektördeki liderliğimizi sürdürmeye
+                kararlıyız. Bize güvenen ve destekleyen tüm müşterilerimize teşekkür ederiz.
               </p>
             </div>
             <div className="mt-10">
