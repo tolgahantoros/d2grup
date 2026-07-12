@@ -103,11 +103,11 @@ export default function Footer() {
           </span>
           <div className="relative">
             {/* Yumuşak ışık halesi */}
-            <div className="absolute -inset-5 bg-white/10 blur-2xl rounded-full opacity-40 group-hover:opacity-70 transition-opacity duration-500 pointer-events-none" />
+            <div className="absolute -inset-4 bg-white/10 blur-xl rounded-full opacity-35 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none" />
             <img
               src="https://kcreative.com.tr/wp-content/uploads/2025/09/kk1.png"
               alt="KCreative Office"
-              className="relative h-6 md:h-7 w-auto object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-all duration-300 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
+              className="relative h-5 w-auto object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-all duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.28)]"
             />
           </div>
         </a>

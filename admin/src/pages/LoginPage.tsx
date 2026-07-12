@@ -34,10 +34,10 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-app-bg">
       <div className="w-full max-w-sm">
-        <div className="flex flex-col items-center mb-8">
-          <img src={AGENCY.logo} alt={AGENCY.name} className="h-9 w-auto object-contain mb-5" />
-          <h1 className="text-[16px] font-bold text-app-ink">D2 Grup Yönetim Paneli</h1>
-          <p className="text-[13px] text-app-muted mt-1">Devam etmek için giriş yapın</p>
+        <div className="flex flex-col items-center mb-8 text-center">
+          <h1 className="text-[20px] font-bold text-app-ink tracking-tight">D2 Grup</h1>
+          <p className="text-[13px] font-semibold text-app-muted tracking-wide mt-1">YÖNETİM PANELİ</p>
+          <p className="text-[12px] text-app-muted mt-3">Devam etmek için giriş yapın</p>
         </div>
 
         <form onSubmit={submit} className="bg-white border border-app-border rounded-xl p-6 flex flex-col gap-4 shadow-sm">
@@ -62,7 +62,7 @@ export default function LoginPage() {
           <img
             src={AGENCY.logo}
             alt={AGENCY.name}
-            className="h-3.5 w-auto object-contain opacity-60 group-hover:opacity-100 transition-opacity"
+            className="h-6 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity"
           />
         </a>
       </div>

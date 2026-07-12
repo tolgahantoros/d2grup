@@ -52,19 +52,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   const SidebarContent = (
     <div className="flex flex-col h-full">
-      {/* Ajans logosu */}
-      <div className="px-5 pt-5 pb-4 border-b border-app-border shrink-0">
-        <a href={AGENCY.url} target="_blank" rel="noreferrer" title={AGENCY.name} className="block group">
-          <img
-            src={AGENCY.logo}
-            alt={AGENCY.name}
-            className="h-7 w-auto object-contain group-hover:opacity-80 transition-opacity"
-          />
-        </a>
-        <div className="flex items-center gap-2.5 mt-3.5">
-          <span className="h-px flex-grow bg-gradient-to-r from-transparent to-app-border" />
-          <span className="text-[9px] font-bold tracking-[0.28em] text-app-muted uppercase">Yönetim Paneli</span>
-          <span className="h-px flex-grow bg-gradient-to-l from-transparent to-app-border" />
+      {/* Firma — D2 Grup */}
+      <div className="h-16 flex items-center gap-2.5 px-5 border-b border-app-border shrink-0">
+        <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-app-ink text-white text-[13px] font-extrabold tracking-tight">
+          D2
+        </span>
+        <div className="leading-none">
+          <span className="text-[14px] font-bold text-app-ink">D2 Grup</span>
+          <span className="block text-[9px] text-app-muted tracking-[0.18em] mt-1 uppercase">Yönetim Paneli</span>
         </div>
       </div>
 
@@ -153,7 +148,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <img
               src={AGENCY.logo}
               alt={AGENCY.name}
-              className="h-5 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity"
+              className="h-7 w-auto object-contain opacity-75 group-hover:opacity-100 transition-opacity"
             />
           </a>
         </footer>
