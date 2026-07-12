@@ -99,15 +99,45 @@ export function Spinner() {
   );
 }
 
-export function PageHeader({ title, subtitle, actions }: { title: string; subtitle?: string; actions?: ReactNode }) {
+export function PageHeader({ title, subtitle, actions, icon }: { title: string; subtitle?: string; actions?: ReactNode; icon?: ReactNode }) {
   return (
-    <div className="flex items-start justify-between gap-4 mb-6 flex-wrap">
-      <div>
-        <h1 className="text-[21px] font-bold text-app-ink tracking-tight">{title}</h1>
-        {subtitle && <p className="text-[13px] text-app-muted mt-1">{subtitle}</p>}
+    <div className="flex items-start justify-between gap-4 mb-6 flex-wrap pb-5 border-b border-app-border">
+      <div className="flex items-center gap-3.5">
+        {icon && (
+          <span className="w-11 h-11 rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 ring-1 ring-emerald-600/10 text-emerald-600 flex items-center justify-center shrink-0">
+            {icon}
+          </span>
+        )}
+        <div>
+          <h1 className="text-[21px] font-bold text-app-ink tracking-tight">{title}</h1>
+          {subtitle && <p className="text-[13px] text-app-muted mt-1">{subtitle}</p>}
+        </div>
       </div>
-      {actions && <div className="flex items-center gap-2">{actions}</div>}
+      {actions && <div className="flex items-center gap-2 shrink-0">{actions}</div>}
     </div>
+  );
+}
+
+// Ikon başlıklı bölüm kartı — form/ayar sayfaları için modern gruplama
+export function SectionCard({ title, description, icon, actions, children, className = '' }: { title: string; description?: string; icon?: ReactNode; actions?: ReactNode; children: ReactNode; className?: string }) {
+  return (
+    <Card className={`overflow-hidden ${className}`}>
+      <div className="flex items-center justify-between gap-3 px-5 py-4 border-b border-app-border bg-zinc-50/40">
+        <div className="flex items-center gap-2.5">
+          {icon && (
+            <span className="w-8 h-8 rounded-lg bg-emerald-50 ring-1 ring-emerald-600/10 text-emerald-600 flex items-center justify-center shrink-0">
+              {icon}
+            </span>
+          )}
+          <div>
+            <h3 className="text-[14px] font-bold text-app-ink">{title}</h3>
+            {description && <p className="text-[12px] text-app-muted mt-0.5">{description}</p>}
+          </div>
+        </div>
+        {actions}
+      </div>
+      <div className="p-5">{children}</div>
+    </Card>
   );
 }
 

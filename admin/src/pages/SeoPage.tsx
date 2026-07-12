@@ -1,8 +1,8 @@
-import { useEffect, useState, type ReactNode } from 'react';
-import { Save, Plus, Trash2, Search, BarChart3 } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Save, Plus, Trash2, Search, Code } from 'lucide-react';
 import { api } from '../lib/api';
 import { useToast, useConfirm } from '../components/Feedback';
-import { Button, Card, Input, Textarea, Field, Spinner, PageHeader, EmptyState } from '../components/ui';
+import { Button, Input, Textarea, Field, Spinner, PageHeader, EmptyState, SectionCard } from '../components/ui';
 
 // ---------------------------------------------------------- Tipler
 interface SeoRow {
@@ -38,29 +38,6 @@ const INTEGRATION_DEFAULTS: Integrations = {
 
 let cidCounter = 0;
 const nextCid = () => `row_${++cidCounter}`;
-
-function SectionTitle({ icon, title, hint }: { icon: ReactNode; title: string; hint?: string }) {
-  return (
-    <div className="flex items-start gap-2.5 mb-4">
-      <span className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
-        {icon}
-      </span>
-      <div>
-        <h2 className="text-[15px] font-bold text-app-ink">{title}</h2>
-        {hint && <p className="text-[12px] text-app-muted mt-0.5">{hint}</p>}
-      </div>
-    </div>
-  );
-}
-
-function CardHead({ title, hint }: { title: string; hint?: string }) {
-  return (
-    <div className="px-5 pt-5 pb-3 border-b border-app-border">
-      <h2 className="text-[14px] font-bold text-app-ink">{title}</h2>
-      {hint && <p className="text-[12px] text-app-muted mt-0.5">{hint}</p>}
-    </div>
-  );
-}
 
 export default function SeoPage() {
   const toast = useToast();
@@ -177,133 +154,135 @@ export default function SeoPage() {
 
   return (
     <div>
-      <PageHeader title="SEO ve Entegrasyonlar" subtitle="Sayfa meta bilgilerini ve pazarlama entegrasyonlarını yönetin" />
+      <PageHeader
+        icon={<Search size={20} />}
+        title="SEO ve Entegrasyonlar"
+        subtitle="Sayfa meta bilgilerini ve pazarlama entegrasyonlarını yönetin"
+      />
 
-      {/* ==================== A) Sayfa SEO ==================== */}
-      <section className="mb-10">
-        <div className="flex items-start justify-between gap-4 flex-wrap">
-          <SectionTitle
-            icon={<Search size={16} />}
-            title="Sayfa SEO"
-            hint="Her sayfa için başlık, açıklama ve sosyal medya görsellerini tanımlayın"
-          />
-          <Button variant="secondary" icon={<Plus size={15} />} onClick={addRow}>
-            Yeni sayfa ekle
-          </Button>
-        </div>
-
-        {rows.length === 0 ? (
-          <EmptyState title="Henüz SEO kaydı yok" hint="Yeni sayfa ekleyerek başlayın." />
-        ) : (
-          <div className="flex flex-col gap-4">
-            {rows.map((row) => (
-              <Card key={row.cid} className="p-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <Field label="Sayfa Yolu (Path)" required>
-                    <Input value={row.path} onChange={(e) => setRow(row.cid, 'path', e.target.value)} placeholder="/ veya /urunler" />
-                  </Field>
-                  <Field label="Başlık (Title)">
-                    <Input value={row.title} onChange={(e) => setRow(row.cid, 'title', e.target.value)} />
-                  </Field>
-                  <div className="sm:col-span-2">
-                    <Field label="Açıklama (Description)">
-                      <Textarea rows={2} value={row.description} onChange={(e) => setRow(row.cid, 'description', e.target.value)} />
+      <div className="flex flex-col gap-8 max-w-3xl">
+        {/* ==================== A) Sayfa SEO ==================== */}
+        <SectionCard
+          icon={<Search size={18} />}
+          title="Sayfa SEO"
+          description="Her sayfa için başlık, açıklama ve sosyal medya görsellerini tanımlayın"
+          actions={
+            <Button variant="secondary" icon={<Plus size={15} />} onClick={addRow}>
+              Yeni sayfa ekle
+            </Button>
+          }
+        >
+          {rows.length === 0 ? (
+            <EmptyState title="Henüz SEO kaydı yok" hint="Yeni sayfa ekleyerek başlayın." />
+          ) : (
+            <div className="flex flex-col gap-4">
+              {rows.map((row) => (
+                <div key={row.cid} className="bg-zinc-50/60 border border-app-border rounded-xl p-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <Field label="Sayfa Yolu (Path)" required>
+                      <Input value={row.path} onChange={(e) => setRow(row.cid, 'path', e.target.value)} placeholder="/ veya /urunler" />
+                    </Field>
+                    <Field label="Başlık (Title)">
+                      <Input value={row.title} onChange={(e) => setRow(row.cid, 'title', e.target.value)} />
+                    </Field>
+                    <div className="sm:col-span-2">
+                      <Field label="Açıklama (Description)">
+                        <Textarea rows={2} value={row.description} onChange={(e) => setRow(row.cid, 'description', e.target.value)} />
+                      </Field>
+                    </div>
+                    <Field label="OG Görseli">
+                      <Input value={row.ogImage} onChange={(e) => setRow(row.cid, 'ogImage', e.target.value)} placeholder="assets/... veya URL" />
+                    </Field>
+                    <Field label="Canonical URL">
+                      <Input value={row.canonical} onChange={(e) => setRow(row.cid, 'canonical', e.target.value)} placeholder="https://..." />
                     </Field>
                   </div>
-                  <Field label="OG Görseli">
-                    <Input value={row.ogImage} onChange={(e) => setRow(row.cid, 'ogImage', e.target.value)} placeholder="assets/... veya URL" />
-                  </Field>
-                  <Field label="Canonical URL">
-                    <Input value={row.canonical} onChange={(e) => setRow(row.cid, 'canonical', e.target.value)} placeholder="https://..." />
+                  <div className="flex items-center justify-end gap-2 mt-4">
+                    <Button
+                      variant="ghost"
+                      icon={<Trash2 size={14} />}
+                      onClick={() => removeRow(row)}
+                      className="text-red-500 hover:bg-red-50"
+                    >
+                      Sil
+                    </Button>
+                    <Button icon={<Save size={15} />} loading={savingRow === row.cid} onClick={() => saveRow(row)}>
+                      Kaydet
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </SectionCard>
+
+        {/* ==================== B) Entegrasyonlar & Genel SEO ==================== */}
+        <SectionCard
+          icon={<Code size={18} />}
+          title="Entegrasyonlar & Genel SEO"
+          description="Analitik, dönüşüm takibi ve özel script ayarları"
+          actions={
+            <Button icon={<Save size={15} />} loading={savingIntegrations} onClick={saveIntegrations}>
+              Kaydet
+            </Button>
+          }
+        >
+          <div className="flex flex-col gap-6">
+            <div className="bg-zinc-50/60 border border-app-border rounded-xl p-4">
+              <h4 className="text-[13px] font-bold text-app-ink mb-4">Analitik & Takip Kodları</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <Field label="Google Analytics ID">
+                  <Input value={integrations.googleAnalyticsId} onChange={(e) => setInt('googleAnalyticsId', e.target.value)} placeholder="G-XXXX" />
+                </Field>
+                <Field label="Google Tag Manager ID">
+                  <Input value={integrations.googleTagManagerId} onChange={(e) => setInt('googleTagManagerId', e.target.value)} placeholder="GTM-XXXX" />
+                </Field>
+                <Field label="Meta Pixel ID">
+                  <Input value={integrations.metaPixelId} onChange={(e) => setInt('metaPixelId', e.target.value)} />
+                </Field>
+                <Field label="Google Ads Dönüşüm">
+                  <Input value={integrations.googleAdsConversion} onChange={(e) => setInt('googleAdsConversion', e.target.value)} placeholder="AW-XXXX/..." />
+                </Field>
+                <div className="sm:col-span-2">
+                  <Field label="Search Console Doğrulama">
+                    <Input
+                      value={integrations.searchConsoleVerification}
+                      onChange={(e) => setInt('searchConsoleVerification', e.target.value)}
+                      placeholder="google-site-verification içeriği"
+                    />
                   </Field>
                 </div>
-                <div className="flex items-center justify-end gap-2 mt-4">
-                  <Button
-                    variant="ghost"
-                    icon={<Trash2 size={14} />}
-                    onClick={() => removeRow(row)}
-                    className="text-red-500 hover:bg-red-50"
-                  >
-                    Sil
-                  </Button>
-                  <Button icon={<Save size={15} />} loading={savingRow === row.cid} onClick={() => saveRow(row)}>
-                    Kaydet
-                  </Button>
-                </div>
-              </Card>
-            ))}
-          </div>
-        )}
-      </section>
+              </div>
+            </div>
 
-      {/* ==================== B) Entegrasyonlar & Genel SEO ==================== */}
-      <section>
-        <div className="flex items-start justify-between gap-4 flex-wrap">
-          <SectionTitle
-            icon={<BarChart3 size={16} />}
-            title="Entegrasyonlar & Genel SEO"
-            hint="Analitik, dönüşüm takibi ve özel script ayarları"
-          />
-          <Button icon={<Save size={15} />} loading={savingIntegrations} onClick={saveIntegrations}>
-            Kaydet
-          </Button>
-        </div>
-
-        <div className="flex flex-col gap-6 max-w-3xl">
-          <Card>
-            <CardHead title="Analitik & Takip Kodları" />
-            <div className="p-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Field label="Google Analytics ID">
-                <Input value={integrations.googleAnalyticsId} onChange={(e) => setInt('googleAnalyticsId', e.target.value)} placeholder="G-XXXX" />
-              </Field>
-              <Field label="Google Tag Manager ID">
-                <Input value={integrations.googleTagManagerId} onChange={(e) => setInt('googleTagManagerId', e.target.value)} placeholder="GTM-XXXX" />
-              </Field>
-              <Field label="Meta Pixel ID">
-                <Input value={integrations.metaPixelId} onChange={(e) => setInt('metaPixelId', e.target.value)} />
-              </Field>
-              <Field label="Google Ads Dönüşüm">
-                <Input value={integrations.googleAdsConversion} onChange={(e) => setInt('googleAdsConversion', e.target.value)} placeholder="AW-XXXX/..." />
-              </Field>
-              <div className="sm:col-span-2">
-                <Field label="Search Console Doğrulama">
-                  <Input
-                    value={integrations.searchConsoleVerification}
-                    onChange={(e) => setInt('searchConsoleVerification', e.target.value)}
-                    placeholder="google-site-verification içeriği"
+            <div className="bg-zinc-50/60 border border-app-border rounded-xl p-4">
+              <h4 className="text-[13px] font-bold text-app-ink">Özel Scriptler</h4>
+              <p className="text-[12px] text-app-muted mt-0.5 mb-4">Sayfaya eklenecek özel HTML/JS kodları</p>
+              <div className="grid grid-cols-1 gap-4">
+                <Field label="Header Özel Script">
+                  <Textarea
+                    rows={4}
+                    value={integrations.headerScripts}
+                    onChange={(e) => setInt('headerScripts', e.target.value)}
+                    placeholder="&lt;script&gt;...&lt;/script&gt; — sayfa başlığına (head) eklenir"
+                    className="font-mono text-[12px]"
+                  />
+                </Field>
+                <Field label="Footer Özel Script">
+                  <Textarea
+                    rows={4}
+                    value={integrations.footerScripts}
+                    onChange={(e) => setInt('footerScripts', e.target.value)}
+                    placeholder="&lt;script&gt;...&lt;/script&gt; — sayfa sonuna (body) eklenir"
+                    className="font-mono text-[12px]"
                   />
                 </Field>
               </div>
             </div>
-          </Card>
 
-          <Card>
-            <CardHead title="Özel Scriptler" hint="Sayfaya eklenecek özel HTML/JS kodları" />
-            <div className="p-5 grid grid-cols-1 gap-4">
-              <Field label="Header Özel Script">
-                <Textarea
-                  rows={4}
-                  value={integrations.headerScripts}
-                  onChange={(e) => setInt('headerScripts', e.target.value)}
-                  placeholder="&lt;script&gt;...&lt;/script&gt; — sayfa başlığına (head) eklenir"
-                  className="font-mono text-[12px]"
-                />
-              </Field>
-              <Field label="Footer Özel Script">
-                <Textarea
-                  rows={4}
-                  value={integrations.footerScripts}
-                  onChange={(e) => setInt('footerScripts', e.target.value)}
-                  placeholder="&lt;script&gt;...&lt;/script&gt; — sayfa sonuna (body) eklenir"
-                  className="font-mono text-[12px]"
-                />
-              </Field>
-            </div>
-          </Card>
-
-          <Card>
-            <CardHead title="robots.txt" hint="Arama motoru tarayıcıları için kurallar" />
-            <div className="p-5">
+            <div className="bg-zinc-50/60 border border-app-border rounded-xl p-4">
+              <h4 className="text-[13px] font-bold text-app-ink">robots.txt</h4>
+              <p className="text-[12px] text-app-muted mt-0.5 mb-4">Arama motoru tarayıcıları için kurallar</p>
               <Field label="robots.txt İçeriği">
                 <Textarea
                   rows={6}
@@ -314,15 +293,15 @@ export default function SeoPage() {
                 />
               </Field>
             </div>
-          </Card>
 
-          <div>
-            <Button icon={<Save size={15} />} loading={savingIntegrations} onClick={saveIntegrations}>
-              Kaydet
-            </Button>
+            <div>
+              <Button icon={<Save size={15} />} loading={savingIntegrations} onClick={saveIntegrations}>
+                Kaydet
+              </Button>
+            </div>
           </div>
-        </div>
-      </section>
+        </SectionCard>
+      </div>
     </div>
   );
 }

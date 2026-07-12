@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import { Mail, Phone, Trash2, Eye, MessageSquare, User } from 'lucide-react';
+import { useEffect, useMemo, useState } from 'react';
+import { Mail, Phone, Trash2, Eye, MessageSquare, User, Search } from 'lucide-react';
 import { api } from '../lib/api';
 import { useToast, useConfirm } from '../components/Feedback';
-import { Button, Card, Badge, Spinner, PageHeader, EmptyState } from '../components/ui';
+import { Button, Card, Input, Badge, Spinner, PageHeader, EmptyState } from '../components/ui';
 import { Modal } from '../components/Modal';
 
 interface ContactMessage {
@@ -22,6 +22,7 @@ export default function MessagesPage() {
   const [rows, setRows] = useState<ContactMessage[]>([]);
   const [loading, setLoading] = useState(true);
   const [active, setActive] = useState<ContactMessage | null>(null);
+  const [q, setQ] = useState('');
   const toast = useToast();
   const confirm = useConfirm();
 
@@ -42,6 +43,12 @@ export default function MessagesPage() {
   }, []);
 
   const unread = rows.filter((r) => !r.read).length;
+
+  const filtered = useMemo(() => {
+    if (!q.trim()) return rows;
+    const s = q.toLowerCase();
+    return rows.filter((r) => (r.name + r.email + r.phone + r.subject).toLowerCase().includes(s));
+  }, [rows, q]);
 
   const open = async (row: ContactMessage) => {
     setActive(row);
@@ -76,47 +83,56 @@ export default function MessagesPage() {
   return (
     <>
       <PageHeader
+        icon={<Mail size={20} />}
         title="İletişim Mesajları"
         subtitle={unread > 0 ? `${unread} okunmamış mesaj` : 'Tüm mesajlar okundu'}
       />
 
-      <Card>
+      <div className="flex items-center justify-between gap-3 mb-4">
+        <div className="relative w-full max-w-xs">
+          <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-app-muted" />
+          <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Mesaj ara..." className="pl-9" />
+        </div>
+        <span className="text-[12px] text-app-muted whitespace-nowrap">{filtered.length} kayıt</span>
+      </div>
+
+      <Card className="overflow-hidden">
         {loading ? (
           <Spinner />
-        ) : rows.length === 0 ? (
+        ) : filtered.length === 0 ? (
           <EmptyState title="Mesaj yok" hint="Henüz iletişim formu üzerinden mesaj gelmedi." />
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-[13px]">
               <thead>
-                <tr className="border-b border-app-border text-app-muted text-left">
-                  <th className="font-semibold px-4 py-3">Ad</th>
-                  <th className="font-semibold px-4 py-3">E-posta</th>
-                  <th className="font-semibold px-4 py-3">Telefon</th>
-                  <th className="font-semibold px-4 py-3">Konu</th>
-                  <th className="font-semibold px-4 py-3">Tarih</th>
-                  <th className="font-semibold px-4 py-3">Durum</th>
-                  <th className="px-4 py-3 text-right">İşlem</th>
+                <tr className="bg-zinc-50/70 border-b border-app-border">
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3 text-left whitespace-nowrap">Ad</th>
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3 text-left whitespace-nowrap">E-posta</th>
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3 text-left whitespace-nowrap">Telefon</th>
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3 text-left whitespace-nowrap">Konu</th>
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3 text-left whitespace-nowrap">Tarih</th>
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3 text-left whitespace-nowrap">Durum</th>
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3 text-right whitespace-nowrap">İşlem</th>
                 </tr>
               </thead>
               <tbody>
-                {rows.map((r) => (
+                {filtered.map((r) => (
                   <tr
                     key={r.id}
                     onClick={() => open(r)}
-                    className="border-b border-app-border last:border-0 hover:bg-zinc-50/60 cursor-pointer"
+                    className="border-b border-app-border last:border-0 hover:bg-emerald-50/30 transition-colors cursor-pointer"
                   >
-                    <td className="px-4 py-3">
+                    <td className="px-4 py-3.5 align-middle">
                       <span className={`text-app-ink ${r.read ? '' : 'font-bold'}`}>{r.name}</span>
                     </td>
-                    <td className="px-4 py-3 text-app-muted">{r.email}</td>
-                    <td className="px-4 py-3 text-app-muted">{r.phone}</td>
-                    <td className="px-4 py-3 text-app-muted">{r.subject}</td>
-                    <td className="px-4 py-3 text-app-muted whitespace-nowrap">{fmtDate(r.createdAt)}</td>
-                    <td className="px-4 py-3">
+                    <td className="px-4 py-3.5 align-middle text-app-muted">{r.email}</td>
+                    <td className="px-4 py-3.5 align-middle text-app-muted">{r.phone}</td>
+                    <td className="px-4 py-3.5 align-middle text-app-muted">{r.subject}</td>
+                    <td className="px-4 py-3.5 align-middle text-app-muted whitespace-nowrap">{fmtDate(r.createdAt)}</td>
+                    <td className="px-4 py-3.5 align-middle">
                       {r.read ? <Badge tone="gray">Okundu</Badge> : <Badge tone="red">Yeni</Badge>}
                     </td>
-                    <td className="px-4 py-3">
+                    <td className="px-4 py-3.5 align-middle">
                       <div className="flex items-center justify-end gap-1">
                         <button
                           onClick={(e) => {
@@ -124,7 +140,7 @@ export default function MessagesPage() {
                             open(r);
                           }}
                           title="Görüntüle"
-                          className="p-1.5 rounded-lg text-app-muted hover:bg-zinc-100 hover:text-emerald-600"
+                          className="p-1.5 rounded-lg text-app-muted hover:bg-emerald-50 hover:text-emerald-600"
                         >
                           <Eye size={15} />
                         </button>

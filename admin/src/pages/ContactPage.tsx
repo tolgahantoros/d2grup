@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Save } from 'lucide-react';
+import { Save, Phone, Share2, MapPin } from 'lucide-react';
 import { api } from '../lib/api';
 import { useToast } from '../components/Feedback';
-import { Button, Card, Input, Textarea, Field, Spinner, PageHeader } from '../components/ui';
+import { Button, Input, Textarea, Field, Spinner, PageHeader, SectionCard } from '../components/ui';
 
 // ---------------------------------------------------------- Tipler
 interface Social {
@@ -38,16 +38,6 @@ const DEFAULTS: SiteSettings = {
   social: { instagram: '', linkedin: '', youtube: '', twitter: '' },
   mapEmbed: '',
 };
-
-// ---------------------------------------------------------- Kart başlığı
-function CardHead({ title, hint }: { title: string; hint?: string }) {
-  return (
-    <div className="px-5 pt-5 pb-3 border-b border-app-border">
-      <h2 className="text-[14px] font-bold text-app-ink">{title}</h2>
-      {hint && <p className="text-[12px] text-app-muted mt-0.5">{hint}</p>}
-    </div>
-  );
-}
 
 export default function ContactPage() {
   const toast = useToast();
@@ -93,6 +83,7 @@ export default function ContactPage() {
   return (
     <div>
       <PageHeader
+        icon={<Phone size={20} />}
         title="İletişim Bilgileri"
         subtitle="Site genelinde kullanılan iletişim ve sosyal medya bilgileri"
         actions={
@@ -102,11 +93,10 @@ export default function ContactPage() {
         }
       />
 
-      <div className="flex flex-col gap-6 max-w-3xl">
+      <div className="flex flex-col gap-5 max-w-3xl">
         {/* İletişim Bilgileri */}
-        <Card>
-          <CardHead title="İletişim Bilgileri" />
-          <div className="p-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <SectionCard icon={<Phone size={16} />} title="İletişim Bilgileri" description="Telefon, e-posta ve adres bilgileri">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <Field label="Telefon" hint="Görünen numara">
               <Input value={state.phone} onChange={(e) => set('phone', e.target.value)} placeholder="+90 212 000 00 00" />
             </Field>
@@ -137,12 +127,11 @@ export default function ContactPage() {
               </Field>
             </div>
           </div>
-        </Card>
+        </SectionCard>
 
         {/* Sosyal Medya */}
-        <Card>
-          <CardHead title="Sosyal Medya" hint="Profil bağlantılarını girin" />
-          <div className="p-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <SectionCard icon={<Share2 size={16} />} title="Sosyal Medya" description="Profil bağlantılarını girin">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <Field label="Instagram">
               <Input value={state.social.instagram} onChange={(e) => setSocial('instagram', e.target.value)} placeholder="https://instagram.com/..." />
             </Field>
@@ -156,17 +145,14 @@ export default function ContactPage() {
               <Input value={state.social.twitter} onChange={(e) => setSocial('twitter', e.target.value)} placeholder="https://x.com/..." />
             </Field>
           </div>
-        </Card>
+        </SectionCard>
 
         {/* Harita */}
-        <Card>
-          <CardHead title="Harita" />
-          <div className="p-5">
-            <Field label="Harita Kodu" hint="Google Maps embed adresi veya iframe">
-              <Textarea rows={4} value={state.mapEmbed} onChange={(e) => set('mapEmbed', e.target.value)} placeholder="<iframe src=... /> veya embed URL" />
-            </Field>
-          </div>
-        </Card>
+        <SectionCard icon={<MapPin size={16} />} title="Harita" description="Google Maps konum gösterimi">
+          <Field label="Harita Kodu" hint="Google Maps embed adresi veya iframe">
+            <Textarea rows={4} value={state.mapEmbed} onChange={(e) => set('mapEmbed', e.target.value)} placeholder="<iframe src=... /> veya embed URL" />
+          </Field>
+        </SectionCard>
 
         <div>
           <Button icon={<Save size={15} />} loading={saving} onClick={save}>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Plus, Pencil, Trash2, User } from 'lucide-react';
+import { Plus, Pencil, Trash2, Users, ShieldAlert } from 'lucide-react';
 import { api } from '../lib/api';
 import { useAuth } from '../lib/auth';
 import { useToast, useConfirm } from '../components/Feedback';
@@ -60,10 +60,15 @@ export default function UsersPage() {
   if (user?.role !== 'ADMIN') {
     return (
       <>
-        <PageHeader title="Kullanıcılar" />
-        <Card className="p-8 text-center">
-          <p className="text-[14px] font-semibold text-app-ink">Bu bölüme erişim yetkiniz yok.</p>
-          <p className="text-[12px] text-app-muted mt-1">Kullanıcı yönetimi yalnızca yöneticiler tarafından yapılabilir.</p>
+        <PageHeader title="Kullanıcılar" icon={<Users size={20} />} />
+        <Card className="p-10 flex flex-col items-center text-center">
+          <span className="w-14 h-14 rounded-2xl bg-amber-50 ring-1 ring-amber-500/15 text-amber-600 flex items-center justify-center mb-4">
+            <ShieldAlert size={26} />
+          </span>
+          <p className="text-[15px] font-bold text-app-ink">Bu bölüme erişim yetkiniz yok.</p>
+          <p className="text-[13px] text-app-muted mt-1.5 max-w-sm">
+            Kullanıcı yönetimi yalnızca yöneticiler tarafından yapılabilir.
+          </p>
         </Card>
       </>
     );
@@ -151,6 +156,7 @@ export default function UsersPage() {
       <PageHeader
         title="Kullanıcılar"
         subtitle="Panel kullanıcılarını ve rollerini yönetin"
+        icon={<Users size={20} />}
         actions={
           <Button icon={<Plus size={15} />} onClick={openCreate}>
             Yeni Kullanıcı
@@ -158,7 +164,7 @@ export default function UsersPage() {
         }
       />
 
-      <Card>
+      <Card className="overflow-hidden">
         {loading ? (
           <Spinner />
         ) : rows.length === 0 ? (
@@ -167,45 +173,47 @@ export default function UsersPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-[13px]">
               <thead>
-                <tr className="border-b border-app-border text-app-muted text-left">
-                  <th className="font-semibold px-4 py-3">Ad</th>
-                  <th className="font-semibold px-4 py-3">E-posta</th>
-                  <th className="font-semibold px-4 py-3">Rol</th>
-                  <th className="font-semibold px-4 py-3">Durum</th>
-                  <th className="font-semibold px-4 py-3">Kayıt</th>
-                  <th className="px-4 py-3 text-right">İşlem</th>
+                <tr className="bg-zinc-50/70 text-left">
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3">Ad</th>
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3">E-posta</th>
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3">Rol</th>
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3">Durum</th>
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3">Kayıt</th>
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3 text-right">İşlem</th>
                 </tr>
               </thead>
               <tbody>
                 {rows.map((r) => (
-                  <tr key={r.id} className="border-b border-app-border last:border-0 hover:bg-zinc-50/60">
-                    <td className="px-4 py-3">
-                      <span className="inline-flex items-center gap-2 font-semibold text-app-ink">
-                        <User size={14} className="text-app-muted" />
+                  <tr key={r.id} className="border-b border-app-border last:border-0 hover:bg-emerald-50/30 transition-colors">
+                    <td className="px-4 py-3.5">
+                      <span className="inline-flex items-center gap-2.5 font-semibold text-app-ink">
+                        <span className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center text-[12px] font-bold shrink-0">
+                          {(r.name || r.email).trim().charAt(0).toUpperCase()}
+                        </span>
                         {r.name || '—'}
                       </span>
                     </td>
-                    <td className="px-4 py-3 text-app-muted">{r.email}</td>
-                    <td className="px-4 py-3">
+                    <td className="px-4 py-3.5 text-app-muted">{r.email}</td>
+                    <td className="px-4 py-3.5">
                       {r.role === 'ADMIN' ? <Badge tone="indigo">Yönetici</Badge> : <Badge tone="gray">Editör</Badge>}
                     </td>
-                    <td className="px-4 py-3">
+                    <td className="px-4 py-3.5">
                       {r.active ? <Badge tone="green">Aktif</Badge> : <Badge tone="gray">Pasif</Badge>}
                     </td>
-                    <td className="px-4 py-3 text-app-muted whitespace-nowrap">{fmtDate(r.createdAt)}</td>
-                    <td className="px-4 py-3">
+                    <td className="px-4 py-3.5 text-app-muted whitespace-nowrap">{fmtDate(r.createdAt)}</td>
+                    <td className="px-4 py-3.5">
                       <div className="flex items-center justify-end gap-1">
                         <button
                           onClick={() => openEdit(r)}
                           title="Düzenle"
-                          className="p-1.5 rounded-lg text-app-muted hover:bg-zinc-100 hover:text-emerald-600"
+                          className="p-1.5 rounded-lg text-app-muted hover:bg-emerald-50 hover:text-emerald-600 transition"
                         >
                           <Pencil size={15} />
                         </button>
                         <button
                           onClick={() => remove(r)}
                           title="Sil"
-                          className="p-1.5 rounded-lg text-app-muted hover:bg-red-50 hover:text-red-600"
+                          className="p-1.5 rounded-lg text-app-muted hover:bg-red-50 hover:text-red-600 transition"
                         >
                           <Trash2 size={15} />
                         </button>

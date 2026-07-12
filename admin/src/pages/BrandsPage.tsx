@@ -1,9 +1,11 @@
 import ResourceManager from '../components/ResourceManager';
 import { Badge } from '../components/ui';
+import { Award } from 'lucide-react';
 
 export default function BrandsPage() {
   return (
     <ResourceManager
+      icon={<Award size={20} />}
       title="Markalar"
       subtitle="Partner ve global markaları yönetin"
       endpoint="/brands"

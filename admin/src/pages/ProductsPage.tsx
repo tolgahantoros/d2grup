@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Plus, Pencil, Trash2, Search, Star, Upload, FileText } from 'lucide-react';
+import { Plus, Pencil, Trash2, Search, Star, Upload, FileText, Package } from 'lucide-react';
 import { api } from '../lib/api';
 import { useToast, useConfirm } from '../components/Feedback';
 import { Button, Card, Input, Textarea, Field, Toggle, Badge, Spinner, PageHeader, EmptyState } from '../components/ui';
@@ -99,47 +99,50 @@ export default function ProductsPage() {
 
   return (
     <>
-      <PageHeader title="Ürünler" subtitle="Medikal cihaz kataloğunu yönetin" actions={<Button icon={<Plus size={15} />} onClick={openNew}>Yeni Ürün</Button>} />
+      <PageHeader icon={<Package size={20} />} title="Ürünler" subtitle="Medikal cihaz kataloğunu yönetin" actions={<Button icon={<Plus size={15} />} onClick={openNew}>Yeni Ürün</Button>} />
 
-      <div className="relative max-w-xs mb-4">
-        <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-app-muted" />
-        <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Ürün ara..." className="pl-9" />
+      <div className="flex items-center justify-between gap-3 mb-4">
+        <div className="relative w-full max-w-xs">
+          <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-app-muted" />
+          <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Ürün ara..." className="pl-9" />
+        </div>
+        <span className="text-[12px] text-app-muted whitespace-nowrap">{filtered.length} kayıt</span>
       </div>
 
-      <Card>
+      <Card className="overflow-hidden">
         {loading ? <Spinner /> : filtered.length === 0 ? <EmptyState title="Ürün yok" hint="Yeni ürün ekleyin." /> : (
           <div className="overflow-x-auto">
             <table className="w-full text-[13px]">
               <thead>
-                <tr className="border-b border-app-border text-app-muted text-left">
-                  <th className="font-semibold px-4 py-3">Ürün</th>
-                  <th className="font-semibold px-4 py-3">Kategori</th>
-                  <th className="font-semibold px-4 py-3">Marka</th>
-                  <th className="font-semibold px-4 py-3">Sıra</th>
-                  <th className="font-semibold px-4 py-3">Durum</th>
-                  <th className="px-4 py-3 text-right">İşlem</th>
+                <tr className="bg-zinc-50/70 border-b border-app-border">
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3 text-left whitespace-nowrap">Ürün</th>
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3 text-left whitespace-nowrap">Kategori</th>
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3 text-left whitespace-nowrap">Marka</th>
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3 text-left whitespace-nowrap">Sıra</th>
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3 text-left whitespace-nowrap">Durum</th>
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3 text-right whitespace-nowrap">İşlem</th>
                 </tr>
               </thead>
               <tbody>
                 {filtered.map((r) => (
-                  <tr key={r.id} className="border-b border-app-border last:border-0 hover:bg-zinc-50/60">
-                    <td className="px-4 py-3">
+                  <tr key={r.id} className="border-b border-app-border last:border-0 hover:bg-emerald-50/30 transition-colors">
+                    <td className="px-4 py-3.5 align-middle">
                       <div className="flex items-center gap-3">
-                        <img src={img(r.image)} alt="" className="w-10 h-10 rounded object-contain bg-zinc-50 border border-app-border" />
+                        <img src={img(r.image)} alt="" className="w-10 h-10 rounded-lg object-contain bg-zinc-50 border border-app-border" />
                         <div>
                           <span className="font-semibold text-app-ink flex items-center gap-1.5">{r.name} {r.featured && <Star size={12} className="text-amber-500 fill-amber-500" />}</span>
                           <span className="text-app-muted text-[11px]">{r.slug}</span>
                         </div>
                       </div>
                     </td>
-                    <td className="px-4 py-3 text-app-muted">{r.category?.title}</td>
-                    <td className="px-4 py-3 text-app-muted">{r.brand?.name}</td>
-                    <td className="px-4 py-3">{r.order}</td>
-                    <td className="px-4 py-3">{r.active ? <Badge tone="green">Aktif</Badge> : <Badge tone="gray">Pasif</Badge>}</td>
-                    <td className="px-4 py-3">
+                    <td className="px-4 py-3.5 align-middle text-app-muted">{r.category?.title}</td>
+                    <td className="px-4 py-3.5 align-middle text-app-muted">{r.brand?.name}</td>
+                    <td className="px-4 py-3.5 align-middle">{r.order}</td>
+                    <td className="px-4 py-3.5 align-middle">{r.active ? <Badge tone="green">Aktif</Badge> : <Badge tone="gray">Pasif</Badge>}</td>
+                    <td className="px-4 py-3.5 align-middle">
                       <div className="flex items-center justify-end gap-1">
-                        <button onClick={() => setEditing({ ...r })} className="p-1.5 rounded-lg text-app-muted hover:bg-zinc-100 hover:text-emerald-600"><Pencil size={15} /></button>
-                        <button onClick={() => remove(r)} className="p-1.5 rounded-lg text-app-muted hover:bg-red-50 hover:text-red-600"><Trash2 size={15} /></button>
+                        <button onClick={() => setEditing({ ...r })} title="Düzenle" className="p-1.5 rounded-lg text-app-muted hover:bg-emerald-50 hover:text-emerald-600"><Pencil size={15} /></button>
+                        <button onClick={() => remove(r)} title="Sil" className="p-1.5 rounded-lg text-app-muted hover:bg-red-50 hover:text-red-600"><Trash2 size={15} /></button>
                       </div>
                     </td>
                   </tr>

@@ -1,11 +1,13 @@
 import ResourceManager from '../components/ResourceManager';
 import { Badge } from '../components/ui';
+import { Cpu } from 'lucide-react';
 
 const ICONS = ['Zap', 'Waves', 'Target', 'Sun', 'Activity', 'Snowflake', 'Dumbbell', 'AudioWaveform'];
 
 export default function TechnologiesPage() {
   return (
     <ResourceManager
+      icon={<Cpu size={20} />}
       title="Teknolojiler"
       subtitle="Lazer, RF, HIFU, IPL, ultrason, soğutma, EMS, akustik dalga"
       endpoint="/technologies"

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Save, Plus, Trash2, FileText } from 'lucide-react';
+import { Save, Plus, Trash2, FileText, Scale } from 'lucide-react';
 import { api } from '../lib/api';
 import { useToast } from '../components/Feedback';
-import { Button, Card, Input, Textarea, Field, Spinner, PageHeader, EmptyState } from '../components/ui';
+import { Button, Card, Input, Textarea, Field, Spinner, PageHeader, EmptyState, SectionCard } from '../components/ui';
 import { StringListField } from '../components/fields';
 
 // ---------------------------------------------------------- Tipler
@@ -18,15 +18,6 @@ interface LegalDoc {
   updated: string;
   intro: string;
   sections: LegalSection[];
-}
-
-function CardHead({ title, hint }: { title: string; hint?: string }) {
-  return (
-    <div className="px-5 pt-5 pb-3 border-b border-app-border">
-      <h2 className="text-[14px] font-bold text-app-ink">{title}</h2>
-      {hint && <p className="text-[12px] text-app-muted mt-0.5">{hint}</p>}
-    </div>
-  );
 }
 
 export default function LegalPage() {
@@ -96,6 +87,7 @@ export default function LegalPage() {
   return (
     <div>
       <PageHeader
+        icon={<Scale size={20} />}
         title="Yasal Metinler"
         subtitle="Gizlilik, kullanım koşulları, KVKK ve çerez metinlerini yönetin"
         actions={
@@ -121,8 +113,10 @@ export default function LegalPage() {
                     key={d.key}
                     type="button"
                     onClick={() => setActiveKey(d.key)}
-                    className={`flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] font-semibold text-left whitespace-nowrap transition-colors ${
-                      isActive ? 'bg-emerald-600 text-white' : 'text-app-muted hover:bg-zinc-100 hover:text-app-ink'
+                    className={`flex items-center gap-2 px-3 py-2.5 rounded-xl text-[13px] font-semibold text-left whitespace-nowrap transition-all ${
+                      isActive
+                        ? 'bg-emerald-600 text-white shadow-sm shadow-emerald-900/15'
+                        : 'text-app-muted hover:bg-emerald-50/60 hover:text-emerald-700'
                     }`}
                   >
                     <FileText size={15} className="shrink-0" />
@@ -136,9 +130,8 @@ export default function LegalPage() {
           {/* Sağ: seçili doküman editörü */}
           {active && (
             <div className="flex-grow flex flex-col gap-6 max-w-3xl">
-              <Card>
-                <CardHead title="Doküman Bilgileri" />
-                <div className="p-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <SectionCard icon={<FileText size={18} />} title="Doküman Bilgileri" description="Başlık, etiket ve giriş metni">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="sm:col-span-2">
                     <Field label="Başlık">
                       <Input value={active.title} onChange={(e) => setField('title', e.target.value)} />
@@ -156,18 +149,23 @@ export default function LegalPage() {
                     </Field>
                   </div>
                 </div>
-              </Card>
+              </SectionCard>
 
-              <Card>
-                <CardHead title="Bölümler" hint="Her bölüm bir başlık ve bir veya daha fazla paragraftan oluşur" />
-                <div className="p-5 flex flex-col gap-4">
+              <SectionCard
+                icon={<FileText size={18} />}
+                title="Bölümler"
+                description="Her bölüm bir başlık ve bir veya daha fazla paragraftan oluşur"
+              >
+                <div className="flex flex-col gap-4">
                   {active.sections.length === 0 && (
                     <p className="text-[12px] text-app-muted">Henüz bölüm eklenmedi.</p>
                   )}
                   {active.sections.map((sec, i) => (
-                    <div key={i} className="border border-app-border rounded-xl p-4 bg-white flex flex-col gap-3">
+                    <div key={i} className="bg-zinc-50/60 border border-app-border rounded-xl p-4 flex flex-col gap-3">
                       <div className="flex items-center gap-2">
-                        <span className="text-[12px] font-semibold text-app-muted shrink-0">#{i + 1}</span>
+                        <span className="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-600 text-[11px] font-bold flex items-center justify-center shrink-0">
+                          {i + 1}
+                        </span>
                         <Input
                           value={sec.heading}
                           onChange={(e) => setSectionHeading(i, e.target.value)}
@@ -199,7 +197,7 @@ export default function LegalPage() {
                     <Plus size={14} /> Bölüm ekle
                   </button>
                 </div>
-              </Card>
+              </SectionCard>
 
               <div>
                 <Button icon={<Save size={15} />} loading={saving} onClick={save}>

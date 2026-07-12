@@ -1,11 +1,13 @@
 import ResourceManager from '../components/ResourceManager';
 import { Badge } from '../components/ui';
+import { HelpCircle } from 'lucide-react';
 
 const GROUPS = ['Ürünler & Teknoloji', 'Satış & Bayilik', 'Servis & Destek'];
 
 export default function FaqPage() {
   return (
     <ResourceManager
+      icon={<HelpCircle size={20} />}
       title="Sıkça Sorulan Sorular"
       subtitle="Soru-cevapları kategorilere göre yönetin"
       endpoint="/faq"

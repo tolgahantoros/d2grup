@@ -72,7 +72,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </div>
 
       {/* Nav */}
-      <nav className="flex-grow overflow-y-auto py-4 px-3">
+      <nav className="flex-grow overflow-y-auto py-4 px-3 scroll-dark">
         {NAV.map((group) => (
           <div key={group.title} className="mb-5">
             <span className="px-3 text-[9.5px] font-bold tracking-[0.14em] text-white/30">{group.title}</span>

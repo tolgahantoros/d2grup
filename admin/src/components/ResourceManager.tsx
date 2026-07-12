@@ -34,9 +34,10 @@ interface Props {
   titleKey: string; // silme onayında gösterilecek alan
   defaults: Record<string, any>;
   searchable?: boolean;
+  icon?: React.ReactNode;
 }
 
-export default function ResourceManager({ title, subtitle, endpoint, fields, columns, titleKey, defaults, searchable = true }: Props) {
+export default function ResourceManager({ title, subtitle, endpoint, fields, columns, titleKey, defaults, searchable = true, icon }: Props) {
   const [rows, setRows] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [q, setQ] = useState('');
@@ -102,19 +103,23 @@ export default function ResourceManager({ title, subtitle, endpoint, fields, col
   return (
     <>
       <PageHeader
+        icon={icon}
         title={title}
         subtitle={subtitle}
         actions={<Button icon={<Plus size={15} />} onClick={() => setEditing({ ...defaults })}>Yeni Ekle</Button>}
       />
 
       {searchable && (
-        <div className="relative max-w-xs mb-4">
-          <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-app-muted" />
-          <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Ara..." className="pl-9" />
+        <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
+          <div className="relative max-w-xs w-full">
+            <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-app-muted" />
+            <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Ara..." className="pl-9" />
+          </div>
+          {!loading && <span className="text-[12px] text-app-muted">{filtered.length} kayıt</span>}
         </div>
       )}
 
-      <Card>
+      <Card className="overflow-hidden">
         {loading ? (
           <Spinner />
         ) : filtered.length === 0 ? (
@@ -123,25 +128,25 @@ export default function ResourceManager({ title, subtitle, endpoint, fields, col
           <div className="overflow-x-auto">
             <table className="w-full text-[13px]">
               <thead>
-                <tr className="border-b border-app-border text-app-muted text-left">
+                <tr className="bg-zinc-50/70 border-b border-app-border text-left">
                   {columns.map((c) => (
-                    <th key={c.key} className="font-semibold px-4 py-3 whitespace-nowrap">{c.label}</th>
+                    <th key={c.key} className="font-semibold text-[11px] uppercase tracking-wider text-app-muted px-4 py-3 whitespace-nowrap">{c.label}</th>
                   ))}
-                  <th className="px-4 py-3 text-right">İşlem</th>
+                  <th className="px-4 py-3 text-right text-[11px] uppercase tracking-wider text-app-muted font-semibold">İşlem</th>
                 </tr>
               </thead>
               <tbody>
                 {filtered.map((row) => (
-                  <tr key={row.id} className="border-b border-app-border last:border-0 hover:bg-zinc-50/60">
+                  <tr key={row.id} className="border-b border-app-border last:border-0 hover:bg-emerald-50/30 transition-colors">
                     {columns.map((c) => (
-                      <td key={c.key} className="px-4 py-3 align-middle">{c.render ? c.render(row) : String(row[c.key] ?? '')}</td>
+                      <td key={c.key} className="px-4 py-3.5 align-middle">{c.render ? c.render(row) : String(row[c.key] ?? '')}</td>
                     ))}
-                    <td className="px-4 py-3">
+                    <td className="px-4 py-3.5">
                       <div className="flex items-center justify-end gap-1">
-                        <button onClick={() => setEditing({ ...row })} className="p-1.5 rounded-lg text-app-muted hover:bg-zinc-100 hover:text-emerald-600" title="Düzenle">
+                        <button onClick={() => setEditing({ ...row })} className="p-1.5 rounded-lg text-app-muted hover:bg-emerald-50 hover:text-emerald-600 transition-colors" title="Düzenle">
                           <Pencil size={15} />
                         </button>
-                        <button onClick={() => remove(row)} className="p-1.5 rounded-lg text-app-muted hover:bg-red-50 hover:text-red-600" title="Sil">
+                        <button onClick={() => remove(row)} className="p-1.5 rounded-lg text-app-muted hover:bg-red-50 hover:text-red-600 transition-colors" title="Sil">
                           <Trash2 size={15} />
                         </button>
                       </div>

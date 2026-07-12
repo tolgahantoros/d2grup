@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Upload, Trash2, Copy, FileText, Image } from 'lucide-react';
 import { api } from '../lib/api';
 import { useToast, useConfirm } from '../components/Feedback';
-import { Button, Card, Input, Spinner, PageHeader, EmptyState } from '../components/ui';
+import { Card, Input, Spinner, PageHeader, EmptyState, Button } from '../components/ui';
 
 interface MediaItem {
   id: number;
@@ -107,6 +107,7 @@ export default function MediaPage() {
       <PageHeader
         title="Medya Yönetimi"
         subtitle="Görselleri ve PDF dosyalarını yükleyin, düzenleyin"
+        icon={<Image size={20} />}
         actions={
           <>
             <input
@@ -135,12 +136,19 @@ export default function MediaPage() {
           <EmptyState title="Medya yok" hint="Yüklemek için sağ üstteki Yükle butonunu kullanın." />
         </Card>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {items.map((item) => (
-            <Card key={item.id} className="flex flex-col overflow-hidden">
-              <div className="aspect-square bg-zinc-50 border-b border-app-border flex items-center justify-center overflow-hidden">
+            <div
+              key={item.id}
+              className="group flex flex-col rounded-xl border border-app-border bg-app-panel overflow-hidden hover:shadow-md transition"
+            >
+              <div className="aspect-square bg-zinc-50 flex items-center justify-center overflow-hidden">
                 {item.type === 'image' ? (
-                  <img src={item.url} alt={item.alt || item.filename} className="w-full h-full object-cover" />
+                  <img
+                    src={item.url}
+                    alt={item.alt || item.filename}
+                    className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+                  />
                 ) : (
                   <div className="flex flex-col items-center gap-1.5 text-app-muted">
                     <FileText size={34} strokeWidth={1.5} />
@@ -148,12 +156,12 @@ export default function MediaPage() {
                   </div>
                 )}
               </div>
-              <div className="flex flex-col gap-2 p-3">
+              <div className="flex flex-col gap-2 p-3 border-t border-app-border">
                 <div className="flex items-center gap-1.5 text-[12px] font-semibold text-app-ink" title={item.filename}>
                   {item.type === 'image' ? (
-                    <Image size={13} className="text-app-muted shrink-0" />
+                    <Image size={13} className="text-emerald-500 shrink-0" />
                   ) : (
-                    <FileText size={13} className="text-app-muted shrink-0" />
+                    <FileText size={13} className="text-emerald-500 shrink-0" />
                   )}
                   <span className="truncate">{item.filename}</span>
                 </div>
@@ -167,25 +175,25 @@ export default function MediaPage() {
                     if (e.key === 'Enter') (e.target as HTMLInputElement).blur();
                   }}
                 />
-                <div className="flex items-center gap-1">
-                  <Button
-                    variant="secondary"
-                    icon={<Copy size={13} />}
-                    className="flex-1 h-8 px-2 text-[12px]"
+                <div className="flex items-center gap-1.5 opacity-70 group-hover:opacity-100 transition-opacity">
+                  <button
                     onClick={() => copyUrl(item.url)}
+                    title="URL kopyala"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 h-8 px-2 rounded-lg text-[12px] font-semibold text-app-ink border border-app-border bg-white hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200 transition"
                   >
-                    URL
-                  </Button>
+                    <Copy size={13} />
+                    URL kopyala
+                  </button>
                   <button
                     onClick={() => remove(item)}
                     title="Sil"
-                    className="p-2 rounded-lg text-app-muted hover:bg-red-50 hover:text-red-600 border border-app-border"
+                    className="p-2 rounded-lg text-app-muted hover:bg-red-50 hover:text-red-600 border border-app-border transition"
                   >
                     <Trash2 size={14} />
                   </button>
                 </div>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       )}

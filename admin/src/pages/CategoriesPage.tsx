@@ -1,10 +1,12 @@
 import ResourceManager from '../components/ResourceManager';
 import { Badge } from '../components/ui';
 import { img } from '../lib/img';
+import { FolderTree } from 'lucide-react';
 
 export default function CategoriesPage() {
   return (
     <ResourceManager
+      icon={<FolderTree size={20} />}
       title="Kategoriler"
       subtitle="Yüz, vücut, longevity ve global kategorileri yönetin"
       endpoint="/categories"

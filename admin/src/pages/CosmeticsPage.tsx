@@ -1,10 +1,12 @@
 import ResourceManager from '../components/ResourceManager';
 import { Badge } from '../components/ui';
 import { img } from '../lib/img';
+import { Sparkles } from 'lucide-react';
 
 export default function CosmeticsPage() {
   return (
     <ResourceManager
+      icon={<Sparkles size={20} />}
       title="Kozmetik Ürünler"
       subtitle="Kozmetik ürün kataloğunu ayrı yönetin"
       endpoint="/cosmetics"

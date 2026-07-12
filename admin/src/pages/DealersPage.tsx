@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import { Mail, Phone, Trash2, Check, User, Building2, MessageSquare } from 'lucide-react';
+import { useEffect, useMemo, useState } from 'react';
+import { Mail, Phone, Trash2, Check, User, Building2, MessageSquare, Handshake, Search } from 'lucide-react';
 import { api } from '../lib/api';
 import { useToast, useConfirm } from '../components/Feedback';
-import { Button, Card, Textarea, Field, Badge, Spinner, PageHeader, EmptyState } from '../components/ui';
+import { Button, Card, Input, Textarea, Field, Badge, Spinner, PageHeader, EmptyState } from '../components/ui';
 import { Modal } from '../components/Modal';
 
 type DealerStatus = 'new' | 'contacted' | 'approved' | 'rejected';
@@ -40,6 +40,7 @@ export default function DealersPage() {
   const [active, setActive] = useState<Dealer | null>(null);
   const [note, setNote] = useState('');
   const [savingNote, setSavingNote] = useState(false);
+  const [q, setQ] = useState('');
   const toast = useToast();
   const confirm = useConfirm();
 
@@ -60,6 +61,12 @@ export default function DealersPage() {
   }, []);
 
   const unread = rows.filter((r) => !r.read).length;
+
+  const filtered = useMemo(() => {
+    if (!q.trim()) return rows;
+    const s = q.toLowerCase();
+    return rows.filter((r) => (r.name + r.company + r.email + r.phone).toLowerCase().includes(s));
+  }, [rows, q]);
 
   const markRead = async (id: number) => {
     try {
@@ -131,52 +138,61 @@ export default function DealersPage() {
   return (
     <>
       <PageHeader
+        icon={<Handshake size={20} />}
         title="Bayi Başvuruları"
         subtitle={unread > 0 ? `${unread} okunmamış başvuru` : 'Tüm başvurular okundu'}
       />
 
-      <Card>
+      <div className="flex items-center justify-between gap-3 mb-4">
+        <div className="relative w-full max-w-xs">
+          <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-app-muted" />
+          <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Başvuru ara..." className="pl-9" />
+        </div>
+        <span className="text-[12px] text-app-muted whitespace-nowrap">{filtered.length} kayıt</span>
+      </div>
+
+      <Card className="overflow-hidden">
         {loading ? (
           <Spinner />
-        ) : rows.length === 0 ? (
+        ) : filtered.length === 0 ? (
           <EmptyState title="Başvuru yok" hint="Henüz bayi başvurusu gelmedi." />
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-[13px]">
               <thead>
-                <tr className="border-b border-app-border text-app-muted text-left">
-                  <th className="font-semibold px-4 py-3">Ad</th>
-                  <th className="font-semibold px-4 py-3">Firma</th>
-                  <th className="font-semibold px-4 py-3">Telefon</th>
-                  <th className="font-semibold px-4 py-3">E-posta</th>
-                  <th className="font-semibold px-4 py-3">Durum</th>
-                  <th className="font-semibold px-4 py-3">Tarih</th>
-                  <th className="px-4 py-3 text-right">İşlem</th>
+                <tr className="bg-zinc-50/70 border-b border-app-border">
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3 text-left whitespace-nowrap">Ad</th>
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3 text-left whitespace-nowrap">Firma</th>
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3 text-left whitespace-nowrap">Telefon</th>
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3 text-left whitespace-nowrap">E-posta</th>
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3 text-left whitespace-nowrap">Durum</th>
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3 text-left whitespace-nowrap">Tarih</th>
+                  <th className="text-[11px] uppercase tracking-wider text-app-muted font-semibold px-4 py-3 text-right whitespace-nowrap">İşlem</th>
                 </tr>
               </thead>
               <tbody>
-                {rows.map((r) => {
+                {filtered.map((r) => {
                   const st = STATUS[r.status];
                   return (
                     <tr
                       key={r.id}
                       onClick={() => open(r)}
-                      className="border-b border-app-border last:border-0 hover:bg-zinc-50/60 cursor-pointer"
+                      className="border-b border-app-border last:border-0 hover:bg-emerald-50/30 transition-colors cursor-pointer"
                     >
-                      <td className="px-4 py-3">
+                      <td className="px-4 py-3.5 align-middle">
                         <span className="inline-flex items-center gap-2">
                           {!r.read && <span className="w-2 h-2 rounded-full bg-emerald-600 shrink-0" title="Okunmadı" />}
                           <span className={`text-app-ink ${r.read ? '' : 'font-bold'}`}>{r.name}</span>
                         </span>
                       </td>
-                      <td className="px-4 py-3 text-app-muted">{r.company}</td>
-                      <td className="px-4 py-3 text-app-muted">{r.phone}</td>
-                      <td className="px-4 py-3 text-app-muted">{r.email}</td>
-                      <td className="px-4 py-3">
+                      <td className="px-4 py-3.5 align-middle text-app-muted">{r.company}</td>
+                      <td className="px-4 py-3.5 align-middle text-app-muted">{r.phone}</td>
+                      <td className="px-4 py-3.5 align-middle text-app-muted">{r.email}</td>
+                      <td className="px-4 py-3.5 align-middle">
                         <Badge tone={st.tone}>{st.label}</Badge>
                       </td>
-                      <td className="px-4 py-3 text-app-muted whitespace-nowrap">{fmtDate(r.createdAt)}</td>
-                      <td className="px-4 py-3">
+                      <td className="px-4 py-3.5 align-middle text-app-muted whitespace-nowrap">{fmtDate(r.createdAt)}</td>
+                      <td className="px-4 py-3.5 align-middle">
                         <div className="flex items-center justify-end gap-1">
                           <button
                             onClick={(e) => {
