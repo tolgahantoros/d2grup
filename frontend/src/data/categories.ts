@@ -7,8 +7,8 @@ export const CATEGORIES: Category[] = [
   {
     id: 'yuz',
     slug: 'yuz',
-    title: 'YÜZ',
-    subtitle: 'TEKNOLOJİLERİ',
+    title: 'YÜZ BAKIM',
+    subtitle: 'CİHAZLARI',
     description:
       'Cilt gençleştirme, sıkılaştırma ve göz çevresi bakımı için ileri medikal estetik platformları.',
     longDescription:
@@ -19,8 +19,8 @@ export const CATEGORIES: Category[] = [
   {
     id: 'vucut',
     slug: 'vucut',
-    title: 'VÜCUT',
-    subtitle: 'TEKNOLOJİLERİ',
+    title: 'BÖLGESEL VÜCUT ŞEKİLLENDİRME',
+    subtitle: 'CİHAZLARI',
     description:
       'Bölgesel incelme, kas geliştirme ve selülit tedavisi için ameliyatsız vücut şekillendirme sistemleri.',
     longDescription:
@@ -32,7 +32,7 @@ export const CATEGORIES: Category[] = [
     id: 'longevity',
     slug: 'longevity',
     title: 'LONGEVITY',
-    subtitle: 'TEKNOLOJİLERİ',
+    subtitle: 'CİHAZLARI',
     description:
       'Hücresel yaşlanma karşıtı, bütünsel yenilenme ve sağlıklı yaşam odaklı yeni nesil platformlar.',
     longDescription:
@@ -58,8 +58,8 @@ export const getCategory = (slug: string): Category | undefined =>
   CATEGORIES.find((c) => c.slug === slug);
 
 export const CATEGORY_LABEL: Record<CategoryId, string> = {
-  yuz: 'Yüz Teknolojileri',
-  vucut: 'Vücut Teknolojileri',
+  yuz: 'Yüz Bakım Cihazları',
+  vucut: 'Bölgesel Vücut Şekillendirme',
   longevity: 'Longevity',
   global: 'Global Markalar',
 };

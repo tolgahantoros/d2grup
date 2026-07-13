@@ -1,10 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Globe, Plus, Minus, ShoppingBag, ArrowUpRight } from 'lucide-react';
+import { Menu, X, ChevronDown, Globe, Plus, Minus, ShoppingBag, ArrowUpRight, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { NavMenuItem } from '../../types';
 import { useData } from '../../data/DataContext';
 import Logo from './Logo';
+
+// "Cihazlar" mega menüsü sütunları (attığın ürün kategorilerine göre)
+const DEVICE_CATS = [
+  { slug: 'vucut', label: 'Bölgesel Vücut Şekillendirme' },
+  { slug: 'yuz', label: 'Yüz Bakım' },
+  { slug: 'longevity', label: 'Longevity' },
+];
 
 function isActive(item: NavMenuItem, pathname: string): boolean {
   if (item.to === '/') return pathname === '/';
@@ -15,7 +22,7 @@ function isActive(item: NavMenuItem, pathname: string): boolean {
 
 export default function Header() {
   const { pathname } = useLocation();
-  const { nav: NAV, site } = useData();
+  const { nav: NAV, site, products } = useData();
   const store = (site as any)?.store;
   const showStore = Boolean(store?.enabled && store?.url);
   const storeLabel = store?.label || 'ONLINE MAĞAZA';
@@ -49,6 +56,74 @@ export default function Header() {
         <nav className="hidden lg:flex items-center gap-7">
           {NAV.map((item) => {
             const active = isActive(item, pathname);
+            // CİHAZLAR → mega menü (3 kategori sütunu, ürünler otomatik dolar)
+            if (item.to === '/urunler') {
+              return (
+                <div key={item.label} className="relative group/nav py-1">
+                  <Link
+                    to={item.to}
+                    className={`relative flex items-center gap-1 text-xs font-semibold tracking-wider transition-colors duration-200 ${
+                      active ? 'text-white' : 'text-white/85 hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                    <ChevronDown size={12} className="text-white/50 group-hover/nav:rotate-180 transition-transform" />
+                    {active && (
+                      <motion.span
+                        layoutId="activeUnderline"
+                        className="absolute -bottom-1 left-0 right-0 h-[2px] bg-white"
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </Link>
+                  {/* Mega menü */}
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-200">
+                    <div className="bg-black/95 backdrop-blur-lg border border-white/10 rounded-md p-8 shadow-2xl w-[780px] max-w-[92vw]">
+                      <div className="grid grid-cols-3 gap-8">
+                        {DEVICE_CATS.map((dc) => {
+                          const items = products.filter((p) => p.category === dc.slug);
+                          return (
+                            <div key={dc.slug}>
+                              <Link
+                                to={`/urunler/kategori/${dc.slug}`}
+                                className="flex items-center justify-between gap-2 text-[11px] font-bold tracking-widest text-brand-teal uppercase mb-4 pb-2.5 border-b border-white/10 hover:text-brand-teal-light transition-colors"
+                              >
+                                <span className="leading-tight">{dc.label}</span>
+                                <ArrowRight size={12} className="shrink-0" />
+                              </Link>
+                              <ul className="flex flex-col gap-2">
+                                {items.length ? (
+                                  items.slice(0, 8).map((p) => (
+                                    <li key={p.slug}>
+                                      <Link
+                                        to={`/urun/${p.slug}`}
+                                        className="block text-[12px] text-white/70 hover:text-white hover:translate-x-0.5 transition-all leading-snug"
+                                      >
+                                        {p.name}
+                                      </Link>
+                                    </li>
+                                  ))
+                                ) : (
+                                  <li className="text-[11px] text-white/35 italic">Yakında eklenecek</li>
+                                )}
+                              </ul>
+                            </div>
+                          );
+                        })}
+                      </div>
+                      <div className="mt-6 pt-4 border-t border-white/10">
+                        <Link
+                          to="/urunler"
+                          className="inline-flex items-center gap-2 text-[11px] font-bold tracking-widest text-white/80 hover:text-white uppercase transition-colors"
+                        >
+                          Tüm Cihazlar <ArrowRight size={12} />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            }
             if (item.children) {
               return (
                 <div key={item.label} className="relative group/nav py-1">

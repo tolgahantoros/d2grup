@@ -44,22 +44,18 @@ export const SITE = {
 // Ana navigasyon — açılır menülü çoklu sayfa yapısı
 export const NAV: NavMenuItem[] = [
   { label: 'ANASAYFA', to: '/' },
-  { label: 'KURUMSAL', to: '/kurumsal' },
+  { label: 'HAKKINDA', to: '/kurumsal' },
   {
-    label: 'ÜRÜNLER',
+    label: 'CİHAZLAR',
     to: '/urunler',
     children: [
-      { label: 'Tüm Ürünler', to: '/urunler' },
-      { label: 'Yüz Teknolojileri', to: '/urunler/kategori/yuz' },
-      { label: 'Vücut Teknolojileri', to: '/urunler/kategori/vucut' },
+      { label: 'Bölgesel Vücut Şekillendirme', to: '/urunler/kategori/vucut' },
+      { label: 'Yüz Bakım', to: '/urunler/kategori/yuz' },
       { label: 'Longevity', to: '/urunler/kategori/longevity' },
-      { label: 'Global Markalar', to: '/urunler/kategori/global' },
     ],
   },
-  { label: 'TEKNOLOJİLER', to: '/teknolojiler' },
-  { label: 'MARKALAR', to: '/markalar' },
-  { label: 'ÇÖZÜMLER', to: '/cozumler' },
-  { label: 'KOZMETİK', to: '/kozmetik' },
+  { label: 'KOZMETİKLER', to: '/kozmetik' },
+  { label: 'KURUMSAL ÇÖZÜMLER', to: '/cozumler' },
   { label: 'İLETİŞİM', to: '/iletisim' },
 ];
 
@@ -68,21 +64,21 @@ export const FOOTER_LINKS = {
   kurumsal: {
     title: 'KURUMSAL',
     links: [
-      { label: 'Hakkımızda', to: '/kurumsal' },
-      { label: 'Çözümler & Hizmetler', to: '/cozumler' },
+      { label: 'Hakkında', to: '/kurumsal' },
+      { label: 'Kurumsal Çözümler', to: '/cozumler' },
       { label: 'Teknolojiler', to: '/teknolojiler' },
       { label: 'Markalar', to: '/markalar' },
       { label: 'İletişim', to: '/iletisim' },
     ],
   },
   urunler: {
-    title: 'ÜRÜNLER',
+    title: 'CİHAZLAR',
     links: [
-      { label: 'Tüm Ürünler', to: '/urunler' },
-      { label: 'Yüz Teknolojileri', to: '/urunler/kategori/yuz' },
-      { label: 'Vücut Teknolojileri', to: '/urunler/kategori/vucut' },
+      { label: 'Tüm Cihazlar', to: '/urunler' },
+      { label: 'Bölgesel Vücut Şekillendirme', to: '/urunler/kategori/vucut' },
+      { label: 'Yüz Bakım', to: '/urunler/kategori/yuz' },
       { label: 'Longevity', to: '/urunler/kategori/longevity' },
-      { label: 'Kozmetik Ürünler', to: '/kozmetik' },
+      { label: 'Kozmetikler', to: '/kozmetik' },
     ],
   },
   destek: {
