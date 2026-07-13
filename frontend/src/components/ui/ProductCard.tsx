@@ -34,7 +34,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
             {product.categoryLabel}
           </span>
           {product.isNew && (
-            <span className="absolute top-4 right-4 bg-emerald-500 text-white text-[9px] font-bold tracking-widest uppercase px-2.5 py-1">
+            <span className="absolute top-4 right-4 bg-brand-teal text-white text-[9px] font-bold tracking-widest uppercase px-2.5 py-1">
               YENİ
             </span>
           )}

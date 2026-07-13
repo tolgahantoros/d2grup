@@ -42,7 +42,7 @@ export default function CosmeticsBrands() {
                 KOZMETİK ÜRÜNLERİ İNCELE <ArrowRight size={14} />
               </Link>
               <div className="flex items-center gap-2.5 bg-black/40 backdrop-blur-md border border-white/10 px-4 py-2.5 rounded-sm">
-                <BadgeCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                <BadgeCheck className="w-4 h-4 text-brand-teal shrink-0" />
                 <span className="font-mono text-[9px] tracking-widest font-bold uppercase text-white/80">
                   %100 BİYOUYUMLU
                 </span>

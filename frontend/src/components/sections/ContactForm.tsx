@@ -67,7 +67,7 @@ export default function ContactForm({
 
       {submitted ? (
         <div className="relative z-10 flex flex-col items-start gap-3 bg-white/5 border border-white/10 p-6 rounded-sm">
-          <CheckCircle2 className="w-8 h-8 text-emerald-400" />
+          <CheckCircle2 className="w-8 h-8 text-brand-teal" />
           <h4 className="font-display font-bold text-white text-lg uppercase tracking-tight">
             Mesajınız alındı
           </h4>

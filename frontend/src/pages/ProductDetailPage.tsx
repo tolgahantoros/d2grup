@@ -88,7 +88,7 @@ export default function ProductDetailPage() {
                 </span>
               )}
               {product.isNew && (
-                <span className="bg-emerald-500 text-white text-[9px] font-bold tracking-widest px-2.5 py-1 uppercase">
+                <span className="bg-brand-teal text-white text-[9px] font-bold tracking-widest px-2.5 py-1 uppercase">
                   YENİ
                 </span>
               )}
@@ -298,7 +298,7 @@ export default function ProductDetailPage() {
                   <span className="absolute top-3 left-3 bg-black/70 text-white text-[9px] font-bold tracking-widest uppercase px-2.5 py-1">
                     Öncesi
                   </span>
-                  <span className="absolute top-3 right-3 bg-emerald-500 text-white text-[9px] font-bold tracking-widest uppercase px-2.5 py-1">
+                  <span className="absolute top-3 right-3 bg-brand-teal text-white text-[9px] font-bold tracking-widest uppercase px-2.5 py-1">
                     Sonrası
                   </span>
                 </motion.div>

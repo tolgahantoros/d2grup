@@ -10,6 +10,11 @@
   --color-brand-accent: #f4f4f5;
   --color-brand-grey: #1a1a1e;
   --color-brand-light-grey: #a1a1aa;
+
+  /* Marka teal — D2 logosundan türetilen aksan rengi */
+  --color-brand-teal: #20b2aa;
+  --color-brand-teal-dark: #17908a;
+  --color-brand-teal-light: #5fd6cf;
 }
 
 @layer base {

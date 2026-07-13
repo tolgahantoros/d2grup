@@ -125,7 +125,7 @@ export default function CosmeticsPage() {
             </div>
             {/* Biyouyumlu emerald rozet */}
             <div className="absolute -bottom-4 -left-4 md:bottom-6 md:-left-6 flex items-center gap-2 bg-white border border-zinc-200 rounded-sm px-4 py-3 shadow-sm">
-              <BadgeCheck size={18} className="text-emerald-500" />
+              <BadgeCheck size={18} className="text-brand-teal" />
               <span className="font-mono text-[11px] tracking-widest text-zinc-950 uppercase">
                 %100 BİYOUYUMLU
               </span>
@@ -244,7 +244,7 @@ export default function CosmeticsPage() {
                 transition={{ duration: 0.5, delay: i * 0.08 }}
                 className="flex items-start gap-4 border border-white/10 rounded-sm p-6 bg-white/[0.02]"
               >
-                <BadgeCheck size={20} className="text-emerald-400 shrink-0 mt-0.5" />
+                <BadgeCheck size={20} className="text-brand-teal shrink-0 mt-0.5" />
                 <div>
                   <h3 className="font-display font-bold text-sm tracking-widest text-white uppercase mb-2">
                     {t.title}

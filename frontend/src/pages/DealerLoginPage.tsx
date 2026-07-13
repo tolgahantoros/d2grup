@@ -40,7 +40,7 @@ export default function DealerLoginPage() {
 
               {submitted ? (
                 <div className="bg-white/5 border border-white/10 p-6 rounded-sm">
-                  <ShieldCheck className="w-8 h-8 text-emerald-400 mb-3" />
+                  <ShieldCheck className="w-8 h-8 text-brand-teal mb-3" />
                   <p className="font-sans text-white/80 text-sm leading-relaxed">
                     Bu bir demo giriş ekranıdır. Bayi portalı aktivasyonu ve hesap talepleriniz için lütfen{' '}
                     <Link to="/iletisim" className="text-white underline underline-offset-2">

@@ -9,7 +9,9 @@ export default function Footer() {
 
   return (
     <footer className="bg-brand-dark text-white relative border-t border-white/10">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.03),transparent_50%)] pointer-events-none" />
+      {/* Marka teal aksan çizgisi */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-teal/60 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(32,178,170,0.05),transparent_50%)] pointer-events-none" />
 
       {/* Üst bölüm: marka + link kolonları */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-20 relative z-10">
