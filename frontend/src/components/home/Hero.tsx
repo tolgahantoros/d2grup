@@ -77,9 +77,9 @@ export default function Hero({ onPlayVideo }: HeroProps) {
 
         {/* Cihaz görseli (sağ) */}
         <div className="flex-1 flex justify-center items-center relative py-12 lg:py-0 w-full">
-          <div className="absolute w-[320px] h-[320px] md:w-[450px] md:h-[450px] rounded-full border border-white/10 flex items-center justify-center animate-[spin_100s_linear_infinite] pointer-events-none">
+          <div className="absolute w-[320px] h-[320px] md:w-[450px] md:h-[450px] rounded-full border border-brand-teal/30 flex items-center justify-center animate-[spin_100s_linear_infinite] pointer-events-none">
             <div className="absolute w-[95%] h-[95%] rounded-full border border-dashed border-white/5" />
-            <div className="absolute top-0 w-2 h-2 rounded-full bg-white/40 shadow-[0_0_10px_white]" />
+            <div className="absolute top-0 w-2 h-2 rounded-full bg-brand-teal shadow-[0_0_12px_rgba(32,178,170,0.9)]" />
             <div className="absolute bottom-1/4 right-0 w-1.5 h-1.5 rounded-full bg-white/20" />
           </div>
           <div className="absolute w-[240px] h-[240px] md:w-[350px] md:h-[350px] rounded-full bg-radial from-white/10 to-transparent blur-[60px] pointer-events-none" />

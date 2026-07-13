@@ -69,7 +69,7 @@ export default function TechPower() {
                     isSelected ? 'bg-white shadow-md z-10' : 'hover:bg-white/50'
                   }`}
                 >
-                  {isSelected && <div className="absolute inset-x-0 top-0 h-[3px] bg-zinc-950" />}
+                  {isSelected && <div className="absolute inset-x-0 top-0 h-[3px] bg-brand-teal" />}
                   <div
                     className={`p-4 rounded-full transition-all duration-300 ${
                       isSelected ? 'bg-zinc-100' : 'bg-transparent border border-zinc-200'
