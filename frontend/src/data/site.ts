@@ -106,5 +106,5 @@ export const STATS = [
   { value: '20+', label: 'YILLIK DENEYİM', iconName: 'Award' },
   { value: '7', label: 'GLOBAL MARKA', iconName: 'Gem' },
   { value: '2000+', label: 'KURUMSAL PARTNER', iconName: 'Building2' },
-  { value: '25+', label: 'ÜLKEYE İHRACAT', iconName: 'Globe' },
+  { value: '15', label: 'ÜLKEYE İHRACAT', iconName: 'Globe' },
 ];
