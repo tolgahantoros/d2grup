@@ -104,8 +104,7 @@ export const FOOTER_LINKS = {
 // Genel istatistikler (hero + kurumsal)
 export const STATS = [
   { value: '20+', label: 'YILLIK DENEYİM', iconName: 'Award' },
-  { value: '50+', label: 'GLOBAL MARKA', iconName: 'Gem' },
-  { value: '150+', label: 'UZMAN EKİP', iconName: 'Users' },
+  { value: '7', label: 'GLOBAL MARKA', iconName: 'Gem' },
   { value: '2000+', label: 'KURUMSAL PARTNER', iconName: 'Building2' },
   { value: '25+', label: 'ÜLKEYE İHRACAT', iconName: 'Globe' },
 ];

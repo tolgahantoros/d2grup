@@ -8,8 +8,8 @@ interface IntroVideoProps {
 const VIDEO_THUMB = 'assets/renders/hero-device.jpg';
 
 const POINTS = [
-  'FDA ONAYLI PATENTLİ SİSTEMLER',
-  'MÜKEMMEL SERVİS VE YEDEK PARÇA GARANTİSİ',
+  'PATENTLİ SİSTEMLER',
+  'HIZLI SERVİS VE YEDEK PARÇA GARANTİSİ',
   'MEDİKAL UYGULAMA VE KLİNİK EĞİTİMLERİ',
 ];
 

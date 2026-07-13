@@ -8,7 +8,7 @@ export const FAQ: FaqItem[] = [
     group: 'Ürünler & Teknoloji',
     question: 'Cihazlarınız için medikal onaylar ve sertifikalar mevcut mu?',
     answer:
-      'Portföyümüzdeki tüm cihazlar ilgili uluslararası standartlara (CE, FDA vb.) ve Türkiye’deki medikal cihaz mevzuatına uygundur. Her ürün için sertifika ve teknik dokümantasyon teslimatla birlikte sağlanır.',
+      'Portföyümüzdeki tüm cihazlar ilgili uluslararası standartlara (CE vb.) ve Türkiye’deki medikal cihaz mevzuatına uygundur. Her ürün için sertifika ve teknik dokümantasyon teslimatla birlikte sağlanır.',
   },
   {
     group: 'Ürünler & Teknoloji',
