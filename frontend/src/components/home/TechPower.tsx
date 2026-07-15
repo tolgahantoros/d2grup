@@ -6,8 +6,8 @@ import { TECHNOLOGIES } from '../../data/technologies';
 import Icon from '../ui/Icon';
 
 export default function TechPower() {
-  // Ana sayfada ilk 6 teknoloji
-  const techs = TECHNOLOGIES.slice(0, 6);
+  // Ana sayfada ilk 9 teknoloji (3×3 grid)
+  const techs = TECHNOLOGIES.slice(0, 9);
   const [selected, setSelected] = useState(techs[0]);
 
   return (

@@ -41,6 +41,51 @@ export const TECHNOLOGIES: Technology[] = [
     applications: ['Leke Giderme', 'Akne Kontrolü', 'Vasküler Lezyon', 'Foto-gençleştirme'],
   },
   {
+    id: 'kalici-ultrason',
+    title: 'KALICI ULTRASON TEKNOLOJİLERİ',
+    shortTitle: 'KALICI ULTRASON',
+    iconName: 'Radio',
+    description:
+      'Sürekli düşük frekanslı ultrasonik dalgalarla derin dokuya kesintisiz enerji aktarımı; aktif içeriklerin sonoforez ile taşınmasını, mikro-dolaşımı ve kollajen yenilenmesini destekler.',
+    applications: ['Sonoforez', 'Derin Nemlendirme', 'Kollajen Yenileme', 'Cilt Bakımı'],
+  },
+  {
+    id: 'mikro-vibrasyon',
+    title: 'MİKRO VİBRASYON TEKNOLOJİLERİ',
+    shortTitle: 'MİKRO VİBRASYON',
+    iconName: 'Vibrate',
+    description:
+      'Yüksek frekanslı kontrollü mikro-titreşimlerle lenfatik drenajı hızlandıran, kas gevşemesini ve kan dolaşımını artıran nazik doku uyarımı; hassas bölgelerde konforlu uygulama.',
+    applications: ['Lenfatik Drenaj', 'Kan Dolaşımı', 'Kas Gevşetme', 'Göz Çevresi'],
+  },
+  {
+    id: 'diyatermi',
+    title: 'DİYATERMİ TEKNOLOJİLERİ',
+    shortTitle: 'DİYATERMİ',
+    iconName: 'Flame',
+    description:
+      'Yüksek frekanslı elektrik akımıyla dokuda kontrollü içsel ısı üretimi; derin ısınma sayesinde metabolizmayı hızlandırır, kollajen kasılmasını ve doku onarımını tetikler.',
+    applications: ['Derin Isıtma', 'Cilt Sıkılaştırma', 'Doku Onarımı', 'Kontürleme'],
+  },
+  {
+    id: 'oksijen',
+    title: 'OKSİJEN TEKNOLOJİLERİ',
+    shortTitle: 'OKSİJEN',
+    iconName: 'Wind',
+    description:
+      'Basınçlı saf oksijen ve aktif serum infüzyonuyla cildin hücresel oksijenlenmesini artıran teknoloji; canlandırıcı, nemlendirici ve aydınlatıcı etkiyle konforlu bakım deneyimi.',
+    applications: ['Oksijen İnfüzyonu', 'Cilt Canlandırma', 'Nemlendirme', 'Aydınlatma'],
+  },
+  {
+    id: 'pemf',
+    title: 'PEMF TEKNOLOJİLERİ',
+    shortTitle: 'PEMF',
+    iconName: 'Magnet',
+    description:
+      'Atımlı elektromanyetik alan (PEMF) enerjisiyle hücresel yenilenmeyi uyaran, mikro-dolaşımı ve doku iyileşmesini destekleyen; longevity ve bütünsel bakım protokollerine uyumlu teknoloji.',
+    applications: ['Hücresel Yenilenme', 'Mikro-dolaşım', 'Doku İyileşmesi', 'Longevity'],
+  },
+  {
     id: 'ultrason',
     title: 'ULTRASON TEKNOLOJİLERİ',
     shortTitle: 'ULTRASON',

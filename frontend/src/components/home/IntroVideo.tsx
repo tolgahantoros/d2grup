@@ -30,8 +30,8 @@ export default function IntroVideo({ onPlay }: IntroVideoProps) {
             KUSURSUZ UYUMU.
           </h2>
           <p className="font-sans font-light text-zinc-600 text-sm leading-relaxed mb-8">
-            En yeni nesil medikal estetik sistemlerimizle tanışın. Kliniklerinizin başarısını artıran, hastalarınıza en
-            güvenli ve en konforlu deneyimi sunan teknolojilerimizi video tanıtımımızdan izleyin.
+            En yeni nesil medikal estetik sistemlerimizle tanışın. Klinik ve güzellik merkezlerinizin başarısını artıran,
+            hastalarınıza en güvenli ve en konforlu deneyimi sunan teknolojilerimizi video tanıtımımızdan izleyin.
           </p>
           <div className="flex flex-col gap-3">
             {POINTS.map((p) => (

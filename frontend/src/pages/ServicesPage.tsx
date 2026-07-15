@@ -10,6 +10,8 @@ import {
   MonitorPlay,
   Rocket,
   LifeBuoy,
+  PencilRuler,
+  Headset,
   type LucideIcon,
 } from 'lucide-react';
 import PageHeader from '../components/layout/PageHeader';
@@ -62,6 +64,41 @@ const SERVICES: ServiceItem[] = [
   },
 ];
 
+interface SetupItem {
+  icon: LucideIcon;
+  title: string;
+  text: string;
+}
+
+// Yeni salon ve klinik kurulum hizmetleri — anahtar teslim adımlar
+const SETUP_SERVICES: SetupItem[] = [
+  {
+    icon: PencilRuler,
+    title: 'PROJELENDİRME',
+    text: 'Mekân analizi, cihaz yerleşimi ve iş akışına uygun kat planıyla salon veya kliniğinizi baştan sona projelendiriyor, verimli bir çalışma düzeni kurguluyoruz.',
+  },
+  {
+    icon: Headset,
+    title: 'TEKNİK DANIŞMANLIK',
+    text: 'Elektrik, su, havalandırma ve cihaz altyapısı gereksinimlerinden ruhsat sürecine kadar her aşamada uzman teknik danışmanlık sağlıyoruz.',
+  },
+  {
+    icon: Cog,
+    title: 'KURULUM DESTEĞİ',
+    text: 'Cihazların taşınması, montajı, kalibrasyonu ve güvenli devreye alınmasında sahada tam kurulum desteği veriyoruz.',
+  },
+  {
+    icon: GraduationCap,
+    title: 'EĞİTİM',
+    text: 'Uygulayıcı ekibinize cihaz kullanımı ve tedavi protokolleri üzerine uygulamalı başlangıç eğitimi vererek ilk günden hazır olmanızı sağlıyoruz.',
+  },
+  {
+    icon: LifeBuoy,
+    title: 'SATIŞ SONRASI DESTEK',
+    text: 'Kurulum sonrası teknik servis, yedek parça güvencesi ve sürekli danışmanlıkla uzun vadeli iş ortaklığımızı sürdürüyoruz.',
+  },
+];
+
 interface ProcessStep {
   icon: LucideIcon;
   title: string;
@@ -102,7 +139,7 @@ export default function ServicesPage() {
       <PageHeader
         eyebrow="ÇÖZÜMLER & HİZMETLER"
         title="HİZMETLERİMİZ"
-        description="Cihaz tedarikinin ötesinde; danışmanlıktan kuruluma, klinik eğitimden teknik servise kadar uçtan uca hizmetlerle kliniğinizin yanındayız."
+        description="Cihaz tedarikinin ötesinde; danışmanlıktan kuruluma, klinik eğitimden teknik servise kadar uçtan uca hizmetlerle klinik ve güzellik merkezinizin yanındayız."
         backgroundImage="assets/renders/device-grey-diagnostic.jpg"
         breadcrumbs={[{ label: 'Çözümler' }]}
       />
@@ -176,6 +213,46 @@ export default function ServicesPage() {
                     {step.title}
                   </h3>
                   <p className="font-sans font-light text-white/60 text-xs leading-relaxed">{step.text}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Yeni salon ve klinik kurulum hizmetleri — anahtar teslim */}
+      <section id="kurulum-hizmetleri" className="bg-white py-20 md:py-24 px-6 md:px-12 border-t border-zinc-100 scroll-mt-32">
+        <div className="max-w-7xl mx-auto">
+          <SectionHeading
+            eyebrow="ANAHTAR TESLİM KURULUM"
+            title={<>YENİ SALON VE KLİNİK<br />KURULUM HİZMETLERİ</>}
+            description="Sıfırdan bir salon, güzellik merkezi ya da klinik mi kuruyorsunuz? Projeden eğitime, kurulumdan satış sonrası desteğe kadar tüm süreci sizin için uçtan uca yönetiyoruz."
+          />
+          <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {SETUP_SERVICES.map((s, i) => {
+              const IconCmp = s.icon;
+              return (
+                <motion.div
+                  key={s.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-80px' }}
+                  transition={{ duration: 0.5, delay: i * 0.06 }}
+                  className="group relative bg-zinc-50 border border-zinc-100 rounded-sm p-8 flex flex-col h-full overflow-hidden transition-colors duration-300 hover:bg-white hover:border-zinc-200"
+                >
+                  <div className="absolute inset-x-0 top-0 h-[3px] bg-brand-teal scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 rounded-sm bg-zinc-950 flex items-center justify-center shrink-0">
+                      <IconCmp className="w-6 h-6 text-white" strokeWidth={1.5} />
+                    </div>
+                    <span className="font-display font-black text-3xl tracking-tight text-zinc-200 leading-none">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+                  <h3 className="font-display font-bold text-sm tracking-wide text-zinc-950 uppercase mb-3">
+                    {s.title}
+                  </h3>
+                  <p className="font-sans font-light text-zinc-600 text-sm leading-relaxed">{s.text}</p>
                 </motion.div>
               );
             })}

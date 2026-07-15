@@ -8,7 +8,7 @@ export const SITE = {
   legalName: 'D2 Grup Medikal Tic. Ltd. Şti.',
   tagline: 'Medikal Estetik ve Güzellik Teknolojilerinde Lider',
   description:
-    "D2 Grup Medikal, dünyanın en ileri teknolojiye sahip estetik ve güzellik cihazlarını Türkiye ile buluşturan lider distribütör. Yetkin teknik servis ve klinik eğitim desteğiyle kliniklerinize değer katıyoruz.",
+    "D2 Grup Medikal, dünyanın en ileri teknolojiye sahip estetik ve güzellik cihazlarını Türkiye ile buluşturan lider distribütör. Yetkin teknik servis ve klinik eğitim desteğiyle klinik ve güzellik merkezlerinize değer katıyoruz.",
   foundedYear: 2004,
   phone: '0533 048 27 71',
   phoneHref: 'tel:+905330482771',
@@ -32,6 +32,37 @@ export const SITE = {
     youtube: 'https://youtube.com/',
     twitter: 'https://twitter.com/',
   },
+  // Departman iletişim hatları (İletişim sayfasında listelenir).
+  // Boş phone/phoneHref alanları, numara girilene kadar "yakında" olarak gösterilir.
+  departments: [
+    {
+      id: 'satis',
+      label: 'SATIŞ',
+      contactName: 'Mustafa',
+      phone: '+90 543 532 20 08',
+      phoneHref: 'tel:+905435322008',
+    },
+    {
+      id: 'teknik-destek',
+      label: 'TEKNİK DESTEK',
+      contactName: 'Mercan',
+      phone: '+90 533 273 06 03',
+      phoneHref: 'tel:+905332730603',
+    },
+    {
+      id: 'egitim',
+      label: 'EĞİTİM',
+      contactName: '',
+      phone: '',
+      phoneHref: '',
+    },
+  ],
+  // Sosyal medya hesapları — linkler daha sonra eklenecek (boş bırakıldı).
+  instagramAccounts: [
+    { id: 'd2grup', label: 'D2 Grup', href: '' },
+    { id: 'frozen-face-concept', label: 'Frozen Face Concept', href: '' },
+    { id: 'caci-turkiye', label: 'Caci Türkiye', href: '' },
+  ],
   // Online mağaza (e-ticaret) yönlendirmesi — header'daki birincil aksiyon.
   // Panelden düzenlenebilir (Ayarlar › İletişim › Online Mağaza).
   store: {

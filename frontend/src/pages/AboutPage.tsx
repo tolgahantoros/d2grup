@@ -13,7 +13,7 @@ const PILLARS = [
     icon: Target,
     eyebrow: 'MİSYON',
     title: 'MİSYONUMUZ',
-    text: 'Dünyanın en ileri medikal estetik ve güzellik teknolojilerini, yetkin teknik servis ve klinik eğitim güvencesiyle Türkiye pazarına kazandırmak; kliniklerin ve uzmanların başarısına ölçülebilir değer katmak.',
+    text: 'Dünyanın en ileri medikal estetik ve güzellik teknolojilerini, yetkin teknik servis ve klinik eğitim güvencesiyle Türkiye pazarına kazandırmak; klinik, güzellik merkezleri ve uzmanların başarısına ölçülebilir değer katmak.',
   },
   {
     icon: Eye,

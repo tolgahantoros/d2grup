@@ -21,9 +21,9 @@ export default function TechnologiesPage() {
       <section className="bg-white py-16 px-6 md:px-12 border-b border-zinc-100">
         <div className="max-w-7xl mx-auto">
           <p className="font-mono text-[11px] tracking-[0.3em] text-zinc-500 uppercase mb-8">
-            8 TEMEL TEKNOLOJİ AİLESİ
+            13 TEKNOLOJİ AİLESİ
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">
             {TECHNOLOGIES.map((tech, i) => (
               <motion.div
                 key={tech.id}
@@ -158,7 +158,7 @@ export default function TechnologiesPage() {
               </LinkButton>
             </div>
             <p className="font-mono text-[11px] tracking-[0.25em] text-zinc-400 uppercase">
-              8 TEKNOLOJİ · TEK PARTNER
+              13 TEKNOLOJİ · TEK PARTNER
             </p>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Instagram, Linkedin, Youtube, Twitter, ArrowRight } from 'lucide-react';
+import { Phone, Mail, MapPin, Instagram } from 'lucide-react';
 import { SITE, FOOTER_LINKS } from '../../data/site';
 import Logo from './Logo';
 
@@ -70,23 +70,28 @@ export default function Footer() {
             © {year} {SITE.name}. Tüm hakları saklıdır.
           </span>
           <div className="flex items-center gap-3">
-            {[
-              { href: SITE.social.instagram, Icon: Instagram, label: 'Instagram' },
-              { href: SITE.social.linkedin, Icon: Linkedin, label: 'LinkedIn' },
-              { href: SITE.social.youtube, Icon: Youtube, label: 'YouTube' },
-              { href: SITE.social.twitter, Icon: Twitter, label: 'Twitter' },
-            ].map(({ href, Icon, label }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={label}
-                className="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-white/40 hover:bg-white/5 transition-all"
-              >
-                <Icon size={14} />
-              </a>
-            ))}
+            {SITE.instagramAccounts.map((acc) => {
+              const cls =
+                'w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-white/40 hover:bg-white/5 transition-all';
+              const label = `${acc.label} — Instagram`;
+              return acc.href ? (
+                <a
+                  key={acc.id}
+                  href={acc.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={label}
+                  title={label}
+                  className={cls}
+                >
+                  <Instagram size={14} />
+                </a>
+              ) : (
+                <span key={acc.id} aria-label={label} title={label} className={cls}>
+                  <Instagram size={14} />
+                </span>
+              );
+            })}
           </div>
         </div>
       </div>

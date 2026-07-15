@@ -32,7 +32,7 @@ export default function FeaturedProducts() {
                 EN ETKİLİ SONUÇLAR.
               </h2>
               <p className="font-sans font-light text-zinc-600 text-sm leading-relaxed mb-8 max-w-sm">
-                Alanında lider markaların gelişmiş cihazları ile kliniklerinize ve hastalarınıza değer katın.
+                Alanında lider markaların gelişmiş cihazları ile klinik ve güzellik merkezlerinize, hastalarınıza değer katın.
               </p>
             </div>
 

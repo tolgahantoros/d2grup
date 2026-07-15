@@ -12,7 +12,7 @@ export const CATEGORIES: Category[] = [
     description:
       'Cilt gençleştirme, sıkılaştırma ve göz çevresi bakımı için ileri medikal estetik platformları.',
     longDescription:
-      'Yüz teknolojileri kategorimiz; soğutma, radyofrekans, lazer, HIFU ve mikroakım gibi kanıtlanmış modaliteleri bir araya getirerek cilt gençleştirme, leke ve kırışıklık tedavisi, göz çevresi bakımı ve non-invaziv yüz germe alanlarında kliniklerinize eksiksiz bir çözüm portföyü sunar.',
+      'Yüz teknolojileri kategorimiz; soğutma, radyofrekans, lazer, HIFU ve mikroakım gibi kanıtlanmış modaliteleri bir araya getirerek cilt gençleştirme, leke ve kırışıklık tedavisi, göz çevresi bakımı ve non-invaziv yüz germe alanlarında klinik ve güzellik merkezlerinize eksiksiz bir çözüm portföyü sunar.',
     image: 'assets/renders/face-tech.jpg',
     highlights: ['Cilt Gençleştirme', 'Göz Çevresi Bakımı', 'Leke & Kırışıklık', 'Non-invaziv Lifting'],
   },
