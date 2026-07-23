@@ -79,7 +79,7 @@ export default function ProductDetailPage() {
                     activeImg === i ? 'border-zinc-950' : 'border-zinc-100 opacity-70 hover:opacity-100'
                   }`}
                 >
-                  <img src={asset(img)} alt={`${product.name} önizleme ${i + 1}`} className="max-h-full max-w-full object-contain mix-blend-multiply" />
+                  <img src={asset(img)} alt={`${product.name} önizleme ${i + 1}`} loading="lazy" decoding="async" className="max-h-full max-w-full object-contain mix-blend-multiply" />
                 </button>
               ))}
             </div>
@@ -329,7 +329,7 @@ export default function ProductDetailPage() {
                   transition={{ duration: 0.4, delay: (i % 3) * 0.08 }}
                   className="relative rounded-sm overflow-hidden aspect-[4/3] group border border-zinc-100"
                 >
-                  <img src={asset(img)} alt={`${product.name} öncesi ve sonrası ${i + 1}`} className="w-full h-full object-cover" />
+                  <img src={asset(img)} alt={`${product.name} öncesi ve sonrası ${i + 1}`} loading="lazy" decoding="async" className="w-full h-full object-cover" />
                   <span className="absolute top-3 left-3 bg-black/70 text-white text-[9px] font-bold tracking-widest uppercase px-2.5 py-1">
                     Öncesi
                   </span>
