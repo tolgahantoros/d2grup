@@ -10,7 +10,7 @@ export const PRODUCTS: Product[] = [
   {
     "slug": "frozen-face",
     "name": "FROZEN FACE",
-    "brand": "D2 GRUP",
+    "brand": "FROZEN",
     "brandId": "d2-frozen",
     "category": "yuz",
     "categoryLabel": "Yüz Teknolojileri",
@@ -96,7 +96,7 @@ export const PRODUCTS: Product[] = [
   {
     "slug": "frozen-face-o2",
     "name": "FROZEN FACE O2",
-    "brand": "D2 GRUP",
+    "brand": "FROZEN",
     "brandId": "d2-frozen",
     "category": "yuz",
     "categoryLabel": "Yüz Teknolojileri",
@@ -155,7 +155,7 @@ export const PRODUCTS: Product[] = [
   {
     "slug": "frozen-face-pro-max",
     "name": "FROZEN FACE PRO MAX",
-    "brand": "D2 GRUP",
+    "brand": "FROZEN",
     "brandId": "d2-frozen",
     "category": "yuz",
     "categoryLabel": "Yüz Teknolojileri",
@@ -257,7 +257,7 @@ export const PRODUCTS: Product[] = [
   {
     "slug": "frozen-eyes",
     "name": "FROZEN EYES",
-    "brand": "D2 GRUP",
+    "brand": "FROZEN",
     "brandId": "d2-frozen",
     "category": "yuz",
     "categoryLabel": "Yüz Teknolojileri",
@@ -350,7 +350,7 @@ export const PRODUCTS: Product[] = [
   {
     "slug": "frozen-eyes-pro",
     "name": "FROZEN EYES PRO",
-    "brand": "D2 GRUP",
+    "brand": "FROZEN",
     "brandId": "d2-frozen",
     "category": "yuz",
     "categoryLabel": "Yüz Teknolojileri",
@@ -462,7 +462,7 @@ export const PRODUCTS: Product[] = [
   {
     "slug": "frozen-eyes-pro-plus",
     "name": "FROZEN EYES PRO PLUS",
-    "brand": "D2 GRUP",
+    "brand": "FROZEN",
     "brandId": "d2-frozen",
     "category": "yuz",
     "categoryLabel": "Yüz Teknolojileri",
@@ -581,7 +581,7 @@ export const PRODUCTS: Product[] = [
   {
     "slug": "frozen-cilt-analizi",
     "name": "FROZEN CİLT ANALİZİ",
-    "brand": "D2 GRUP",
+    "brand": "FROZEN",
     "brandId": "d2-frozen",
     "category": "yuz",
     "categoryLabel": "Yüz Teknolojileri",
@@ -686,7 +686,7 @@ export const PRODUCTS: Product[] = [
     "slug": "caci-synergy",
     "name": "CACI SYNERGY",
     "brand": "CACI",
-    "brandId": "d2-frozen",
+    "brandId": "caci",
     "category": "yuz",
     "categoryLabel": "Yüz Teknolojileri",
     "tagline": "İngiliz CACI International markasının mikroakım teknolojisiyle yüz kaslarını yeniden eğiten, cerrahi olmayan yüz gençleştirme sistemi.",
@@ -779,8 +779,8 @@ export const PRODUCTS: Product[] = [
   {
     "slug": "face-up",
     "name": "FACE UP",
-    "brand": "D2 GRUP",
-    "brandId": "d2-frozen",
+    "brand": "Face Up",
+    "brandId": "face-up",
     "category": "yuz",
     "categoryLabel": "Yüz Teknolojileri",
     "tagline": "Yüz kaslarını çalıştırarak cildi sıkılaştıran, kollajen ve elastin üretimini destekleyen profesyonel yüz gençleştirme cihazı.",
@@ -843,8 +843,8 @@ export const PRODUCTS: Product[] = [
   {
     "slug": "bubble-up",
     "name": "BUBBLE UP",
-    "brand": "D2 GRUP",
-    "brandId": "d2-frozen",
+    "brand": "Bubble Up",
+    "brandId": "bubble-up",
     "category": "vucut",
     "categoryLabel": "Vücut Teknolojileri",
     "tagline": "Sıkıştırıcı mikrovibrasyon teknolojisiyle selülit, vücut şekillendirme ve cilt gençleştirme sağlayan silikon küreli bakım cihazı.",
@@ -964,7 +964,7 @@ export const PRODUCTS: Product[] = [
   {
     "slug": "frozen-body",
     "name": "FROZEN BODY",
-    "brand": "D2 GRUP",
+    "brand": "FROZEN",
     "brandId": "d2-frozen",
     "category": "vucut",
     "categoryLabel": "Vücut Teknolojileri",
@@ -1069,7 +1069,7 @@ export const PRODUCTS: Product[] = [
   {
     "slug": "frozen-shock-wave-awt",
     "name": "FROZEN SHOCK WAVE AWT",
-    "brand": "D2 GRUP",
+    "brand": "FROZEN",
     "brandId": "d2-frozen",
     "category": "vucut",
     "categoryLabel": "Vücut Teknolojileri",
@@ -1156,8 +1156,8 @@ export const PRODUCTS: Product[] = [
   {
     "slug": "twin-body-ems-2",
     "name": "TWIN BODY EMS 2",
-    "brand": "D2 GRUP",
-    "brandId": "d2-frozen",
+    "brand": "Twin Body",
+    "brandId": "twin-body",
     "category": "vucut",
     "categoryLabel": "Vücut Teknolojileri",
     "tagline": "HIFEM/EMS teknolojisiyle kas dokusunu aktive ederek yağ yakımı ve kas şekillendirmesi sağlayan vücut şekillendirme cihazı.",
@@ -1242,8 +1242,8 @@ export const PRODUCTS: Product[] = [
   {
     "slug": "twin-body-ems-5",
     "name": "TWIN BODY EMS 5",
-    "brand": "D2 GRUP",
-    "brandId": "d2-frozen",
+    "brand": "Twin Body",
+    "brandId": "twin-body",
     "category": "vucut",
     "categoryLabel": "Vücut Teknolojileri",
     "tagline": "Yüksek yoğunluklu elektromanyetik (HI-EMT/EMS) enerjiyle kas güçlendiren ve yağ yakımını destekleyen çift aplikatörlü vücut şekillendirme cihazı.",
@@ -1334,7 +1334,7 @@ export const PRODUCTS: Product[] = [
     "slug": "ross",
     "name": "ROSS ROLLSYSTEMIC",
     "brand": "RÖS'S",
-    "brandId": "d2-frozen",
+    "brandId": "ross",
     "category": "vucut",
     "categoryLabel": "Vücut Teknolojileri",
     "tagline": "ROLL kompresyon masajı ile 448 kHz kapasitif-rezistif sistemik diatermiyi birleştiren, yüz ve vücut için endoaktivasyon cihazı.",
@@ -1448,10 +1448,10 @@ export const PRODUCTS: Product[] = [
     "slug": "eximia",
     "name": "EXIMIA HR77 PLATINUM",
     "brand": "Eximia",
-    "brandId": "d2-frozen",
+    "brandId": "eximia",
     "category": "vucut",
     "categoryLabel": "Vücut Teknolojileri",
-    "tagline": "EXIMIA HR77 PLATINUM",
+    "tagline": "",
     "description": "",
     "sections": [
       {
@@ -1476,8 +1476,8 @@ export const PRODUCTS: Product[] = [
   {
     "slug": "emchair-mini",
     "name": "EMCHAIR MINI",
-    "brand": "D2 GRUP",
-    "brandId": "d2-frozen",
+    "brand": "EMChair",
+    "brandId": "emchair",
     "category": "vucut",
     "categoryLabel": "Vücut Teknolojileri",
     "tagline": "İdrar kaçırma ve prostat stimülasyonu için tasarlanmış, non-invaziv pelvik taban kası güçlendirme koltuğu.",
@@ -1550,8 +1550,8 @@ export const PRODUCTS: Product[] = [
   {
     "slug": "ultrawave",
     "name": "ULTRAWAVE LİPOLİZ",
-    "brand": "D2 GRUP",
-    "brandId": "d2-frozen",
+    "brand": "UltraWave",
+    "brandId": "ultrawave",
     "category": "vucut",
     "categoryLabel": "Vücut Teknolojileri",
     "tagline": "Radyofrekans, ultrason (kavitasyon), vakum ve kızılötesi ışığı tek platformda birleştiren ameliyatsız bölgesel incelme ve vücut şekillendirme sistemi.",
@@ -1658,8 +1658,8 @@ export const PRODUCTS: Product[] = [
   {
     "slug": "infinite-young",
     "name": "INFINITE YOUNG",
-    "brand": "D2 GRUP",
-    "brandId": "d2-frozen",
+    "brand": "Infinite Young",
+    "brandId": "infinite-young",
     "category": "longevity",
     "categoryLabel": "Longevity",
     "tagline": "Cildin dört katmanını hedefleyen; plazma-iyon, radyofrekans, odaklı ultrason ve elektroporasyonu tek platformda birleştiren iğnesiz yüz gençleştirme sistemi.",
@@ -1759,6 +1759,98 @@ export const PRODUCTS: Product[] = [
       "assets/products/infinite-young/ba2.jpg",
       "assets/products/infinite-young/ba3.jpg"
     ]
+  },
+  {
+    "slug": "frozen-eyes-pro-x",
+    "name": "FROZEN EYES PRO X",
+    "brand": "FROZEN",
+    "brandId": "d2-frozen",
+    "category": "yuz",
+    "categoryLabel": "Yüz Teknolojileri",
+    "series": "FROZEN Serisi",
+    "tagline": "",
+    "description": "",
+    "image": "assets/products/frozen-eyes-pro-x/main.jpg",
+    "gallery": [
+      "assets/products/frozen-eyes-pro-x/main.jpg",
+      "assets/products/frozen-eyes-pro-x/g1.jpg"
+    ],
+    "tags": [],
+    "technologies": [],
+    "features": [],
+    "indications": [],
+    "specs": [],
+    "priceLabel": "Bayiye Özel Fiyat",
+    "priceNote": "Klinik, güzellik merkezi ve bayi fiyatlandırması için teklif alın.",
+    "isNew": true
+  },
+  {
+    "slug": "frozen-face-pro-x",
+    "name": "FROZEN FACE PRO X",
+    "brand": "FROZEN",
+    "brandId": "d2-frozen",
+    "category": "yuz",
+    "categoryLabel": "Yüz Teknolojileri",
+    "series": "FROZEN Serisi",
+    "tagline": "",
+    "description": "",
+    "image": "assets/products/frozen-face-pro-x/main.jpg",
+    "gallery": [
+      "assets/products/frozen-face-pro-x/main.jpg",
+      "assets/products/frozen-face-pro-x/g1.jpg"
+    ],
+    "tags": [],
+    "technologies": [],
+    "features": [],
+    "indications": [],
+    "specs": [],
+    "priceLabel": "Bayiye Özel Fiyat",
+    "priceNote": "Klinik, güzellik merkezi ve bayi fiyatlandırması için teklif alın.",
+    "isNew": true
+  },
+  {
+    "slug": "bubble-up-2026",
+    "name": "BUBBLE UP 2026 VERSİYON",
+    "brand": "Bubble Up",
+    "brandId": "bubble-up",
+    "category": "vucut",
+    "categoryLabel": "Vücut Teknolojileri",
+    "tagline": "",
+    "description": "",
+    "image": "assets/products/bubble-up-2026/main.jpg",
+    "gallery": [
+      "assets/products/bubble-up-2026/main.jpg"
+    ],
+    "tags": [],
+    "technologies": [],
+    "features": [],
+    "indications": [],
+    "specs": [],
+    "priceLabel": "Bayiye Özel Fiyat",
+    "priceNote": "Klinik, güzellik merkezi ve bayi fiyatlandırması için teklif alın.",
+    "isNew": true
+  },
+  {
+    "slug": "capsule-cabin",
+    "name": "CAPSULE CABIN",
+    "brand": "Capsule Cabin",
+    "brandId": "capsule-cabin",
+    "category": "longevity",
+    "categoryLabel": "Longevity",
+    "tagline": "",
+    "description": "",
+    "image": "assets/products/capsule-cabin/main.jpg",
+    "gallery": [
+      "assets/products/capsule-cabin/main.jpg"
+    ],
+    "tags": [],
+    "technologies": [],
+    "features": [],
+    "indications": [],
+    "specs": [],
+    "priceLabel": "Bayiye Özel Fiyat",
+    "priceNote": "Klinik, güzellik merkezi ve bayi fiyatlandırması için teklif alın.",
+    "isNew": true
   }
 ];
 
