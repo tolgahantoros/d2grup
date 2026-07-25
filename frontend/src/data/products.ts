@@ -1768,20 +1768,89 @@ export const PRODUCTS: Product[] = [
     "category": "yuz",
     "categoryLabel": "Yüz Teknolojileri",
     "series": "FROZEN Serisi",
-    "tagline": "",
-    "description": "",
+    "tagline": "Monopolar RF, multipolar RF + oksijen infüzyonu ve EMS mikroakım masajını üç ayrı başlıkta birleştiren 2026 model göz çevresi bakım cihazı.",
+    "description": "Monopolar RF, multipolar RF ile oksijen infüzyonu ve EMS mikroakım masajı teknolojilerini üç ayrı başlıkta bir araya getiren yeni nesil göz çevresi bakım cihazı.",
+    "longDescription": "Frozen Eyes Pro X, monopolar RF, multipolar RF ile oksijen infüzyonu ve EMS mikroakım masajı teknolojilerini üç ayrı başlıkta bir araya getiren, 2026 model profesyonel bir göz çevresi bakım cihazıdır.",
+    "sections": [
+      {
+        "title": "Üç Teknoloji, Tam Kapsamlı Göz Bakımı",
+        "body": "Monopolar RF başlığı, RF enerjisini dermis katmanına ileterek kolajen liflerinde anlık sıkılaşma sağlar ve fibroblast üretimini uyararak zamanla kolajen yenilenmesini destekler. Multipolar RF ve oksijen infüzyonu başlığı, RF ısıtmasını oksijen desteğiyle birleştirerek cilt metabolizmasını hızlandırır ve aktif serumların daha derine nüfuz etmesine yardımcı olur. EMS mikroakım masaj başlığı ise göz çevresi kaslarını nazikçe uyararak kan dolaşımını canlandırır ve lenfatik drenajı destekler."
+      },
+      {
+        "title": "Göz Çevresine Özel Çok Yönlü Etki",
+        "body": "Bu üç teknolojinin birleşimi; ince çizgiler, göz altı torbaları, koyu halkalar, ödem ve şişkinlik gibi göz çevresinde sıkça karşılaşılan sorunlara kapsamlı bir çözüm sunar. Cerrahi, enjeksiyon veya anestezi gerektirmeyen bu uygulama, düzenli bakım rutinlerine kolayca entegre edilebilir."
+      },
+      {
+        "title": "Konforlu ve Etkili Bir Deneyim",
+        "body": "RF enerjisinin dermal katmanı ısıtarak kolajen aktivitesini desteklemesi, oksijen infüzyonu ve EMS masajının sağladığı rahatlık ve dolaşım desteğiyle birleşir. Hafif titreşim ve EMS stimülasyonu göz çevresindeki gerginliği azaltırken uygulamayı keyifli bir deneyime dönüştürür."
+      },
+      {
+        "title": "Golden Eyes Serumu ile Desteklenmiş Sonuçlar",
+        "body": "Frozen Eyes Pro X, özel olarak geliştirilen Golden Eyes mezoterapi serumuyla birlikte kullanıldığında en üst seviye sonuçlara ulaşır. Multipolar RF ve oksijen infüzyonu başlığının sağladığı geçirgenlik ile birleşen bu serum, göz çevresi cildine derinlemesine nüfuz ederek daha canlı, dinlenmiş ve dolgun bir görünüm elde edilmesine katkı sağlar."
+      },
+      {
+        "title": "Teknolojiler",
+        "body": "Monopolar RF · Multipolar RF + Oksijen infüzyonu · EMS mikroakım masaj"
+      },
+      {
+        "title": "Avantajlar",
+        "body": "Üç teknoloji tek cihazda · Cerrahi/enjeksiyon/anestezi gerektirmez · Konforlu ve keyifli uygulama · Golden Eyes serumu ile üst düzey sonuç"
+      },
+      {
+        "title": "Kimler İçin Uygun",
+        "body": "İnce çizgiler, göz altı torbaları, koyu halkalar, ödem ve şişkinlik gibi göz çevresi sorunlarına cerrahi olmayan çözüm arayan kişiler."
+      }
+    ],
     "image": "assets/products/frozen-eyes-pro-x/main.jpg",
     "gallery": [
       "assets/products/frozen-eyes-pro-x/main.jpg",
       "assets/products/frozen-eyes-pro-x/g1.jpg"
     ],
-    "tags": [],
+    "tags": [
+      "Göz Çevresi",
+      "RF",
+      "Oksijen"
+    ],
     "technologies": [],
-    "features": [],
-    "indications": [],
-    "specs": [],
+    "features": [
+      "Monopolar RF ile kolajen sıkılaşması ve fibroblast uyarımı",
+      "Multipolar RF + oksijen infüzyonu başlığı",
+      "EMS mikroakım masaj başlığı",
+      "Üç ayrı uygulama başlığı, 2026 model",
+      "Golden Eyes mezoterapi serumu uyumlu"
+    ],
+    "indications": [
+      "İnce çizgiler",
+      "Göz altı torbaları",
+      "Koyu halkalar",
+      "Ödem ve şişkinlik",
+      "Göz çevresi bakımı"
+    ],
+    "specs": [
+      {
+        "label": "Teknoloji",
+        "value": "Monopolar + Multipolar RF, O2 infüzyon, EMS"
+      },
+      {
+        "label": "Başlık",
+        "value": "3 ayrı uygulama başlığı"
+      },
+      {
+        "label": "Serum",
+        "value": "Golden Eyes mezoterapi"
+      },
+      {
+        "label": "Model",
+        "value": "2026"
+      },
+      {
+        "label": "Uygulama Alanı",
+        "value": "Göz çevresi"
+      }
+    ],
     "priceLabel": "Bayiye Özel Fiyat",
     "priceNote": "Klinik, güzellik merkezi ve bayi fiyatlandırması için teklif alın.",
+    "featured": true,
     "isNew": true
   },
   {
@@ -1792,20 +1861,76 @@ export const PRODUCTS: Product[] = [
     "category": "yuz",
     "categoryLabel": "Yüz Teknolojileri",
     "series": "FROZEN Serisi",
-    "tagline": "",
-    "description": "",
+    "tagline": "Cryo-lifting ve oksijenin senkronize gücü; kolajen sentezini tetikleyen yeni nesil premium yüz başlığı.",
+    "description": "Gelişmiş soğuk terapi (cryo-lifting) ile oksijen infüzyonunu birleştiren, hücresel enerjiyi artıran ve kolajen sentezini tetikleyen premium yüz bakım başlığı.",
+    "longDescription": "Frozen Face Pro X, cryo-lifting ve oksijenin senkronize gücünü tek başlıkta birleştirir. Hücresel enerjiyi artıran yeni nesil oksijen infüzyonu ve kolajen sentezini tetikleyen gelişmiş soğuk terapi ile cildin en derin katmanlarına kadar nefes aldıran bir yenilenme sunar. Soğuk terapi gözenekleri sıkılaştırıp cildi toparlarken, oksijen infüzyonu cilt metabolizmasını hızlandırarak aktif içeriklerin derinlemesine emilimini destekler.",
+    "sections": [
+      {
+        "title": "Cryo-Lifting Soğuk Terapi",
+        "body": "Gelişmiş soğuk terapi, dermiste kolajen sentezini tetiklerken gözenekleri sıkılaştırır, cildi toparlar ve anlık bir sıkılaşma etkisi oluşturur. Kontrollü soğukluk, uygulamayı konforlu ve dinlendirici bir deneyime dönüştürür."
+      },
+      {
+        "title": "Oksijen İnfüzyonu",
+        "body": "Yeni nesil oksijen infüzyonu hücresel enerjiyi artırır ve cilt metabolizmasını hızlandırır; cildin daha canlı, aydınlık ve dinç görünmesine katkı sağlarken aktif bakım içeriklerinin derinlemesine emilimini destekler."
+      },
+      {
+        "title": "Senkronize Güç",
+        "body": "Cryo-lifting ve oksijen infüzyonunun eş zamanlı çalışması, cildin en derin katmanlarına kadar nefes aldıran bütünsel bir yenilenme sağlar; sıkılaşma, canlanma ve kolajen desteğini tek seansta bir araya getirir."
+      },
+      {
+        "title": "Teknolojiler",
+        "body": "Cryo-lifting (soğuk terapi) · Oksijen infüzyonu"
+      },
+      {
+        "title": "Avantajlar",
+        "body": "Soğuk terapi ve oksijenin senkronize etkisi · Cerrahi olmayan, konforlu uygulama · Kolajen sentezini tetikler · Cildi derinlemesine besler ve canlandırır"
+      },
+      {
+        "title": "Kimler İçin Uygun",
+        "body": "Cilt sıkılaşması, canlanma ve gözenek görünümü için cerrahi olmayan, soğuk terapi ve oksijen destekli premium bir yüz bakımı isteyen kişiler."
+      }
+    ],
     "image": "assets/products/frozen-face-pro-x/main.jpg",
     "gallery": [
       "assets/products/frozen-face-pro-x/main.jpg",
       "assets/products/frozen-face-pro-x/g1.jpg"
     ],
-    "tags": [],
+    "tags": [
+      "Cryo-Lifting",
+      "Oksijen"
+    ],
     "technologies": [],
-    "features": [],
-    "indications": [],
-    "specs": [],
+    "features": [
+      "Cryo-lifting (gelişmiş soğuk terapi)",
+      "Yeni nesil oksijen infüzyonu",
+      "Kolajen sentezi uyarımı",
+      "Gözenek sıkılaştırma ve cilt toparlama",
+      "Premium tek başlık, 2026 model"
+    ],
+    "indications": [
+      "Cilt sıkılaştırma",
+      "Gözenek görünümü",
+      "Cilt canlandırma ve aydınlatma",
+      "Kolajen kaybı",
+      "Cilt tonu eşitleme"
+    ],
+    "specs": [
+      {
+        "label": "Teknoloji",
+        "value": "Cryo-lifting + Oksijen infüzyonu"
+      },
+      {
+        "label": "Model",
+        "value": "2026 (Pro X)"
+      },
+      {
+        "label": "Uygulama Alanı",
+        "value": "Yüz"
+      }
+    ],
     "priceLabel": "Bayiye Özel Fiyat",
     "priceNote": "Klinik, güzellik merkezi ve bayi fiyatlandırması için teklif alın.",
+    "featured": true,
     "isNew": true
   },
   {
