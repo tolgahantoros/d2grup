@@ -1,16 +1,21 @@
 import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { asset } from '../../lib/asset';
 
 interface VideoModalProps {
   open: boolean;
   onClose: () => void;
+  /** MP4 yolu (asset() ile mutlaklaştırılır) */
   src?: string;
+  /** Kapak görseli yolu */
+  poster?: string;
 }
 
 export default function VideoModal({
   open,
   onClose,
-  src = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1',
+  src = 'assets/renders/frozen-eyes-tanitim.mp4',
+  poster = 'assets/renders/frozen-eyes-poster.webp',
 }: VideoModalProps) {
   return (
     <AnimatePresence>
@@ -27,7 +32,7 @@ export default function VideoModal({
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.95, y: 15 }}
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-4xl aspect-video bg-zinc-950 border border-white/10 rounded-lg overflow-hidden shadow-2xl relative"
+            className="w-full max-w-4xl aspect-video bg-black border border-white/10 rounded-lg overflow-hidden shadow-2xl relative"
           >
             <button
               onClick={onClose}
@@ -36,13 +41,18 @@ export default function VideoModal({
             >
               <X size={20} />
             </button>
-            <iframe
-              title="D2 Grup Tanıtım Videosu"
-              className="w-full h-full border-none"
-              src={src}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+            {/* Video yalnızca modal açıkken DOM'a girer → hero LCP'yi ve ilk yüklemeyi etkilemez */}
+            <video
+              className="w-full h-full object-cover bg-black"
+              src={asset(src)}
+              poster={asset(poster)}
+              controls
+              autoPlay
+              playsInline
+              preload="auto"
+            >
+              Tarayıcınız video oynatmayı desteklemiyor.
+            </video>
           </motion.div>
         </motion.div>
       )}

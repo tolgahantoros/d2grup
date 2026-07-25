@@ -5,7 +5,7 @@ interface IntroVideoProps {
   onPlay: () => void;
 }
 
-const VIDEO_THUMB = 'assets/renders/hero-device.jpg';
+const VIDEO_THUMB = 'assets/renders/frozen-eyes-poster.webp';
 
 const POINTS = [
   'PATENTLİ SİSTEMLER',
@@ -50,7 +50,7 @@ export default function IntroVideo({ onPlay }: IntroVideoProps) {
             aria-label="Tanıtım videosunu oynat"
           >
             <div className="absolute inset-0 bg-black/40 group-hover:bg-black/35 transition-colors duration-300 z-10" />
-            <img src={asset(VIDEO_THUMB)} alt="D2 Grup video tanıtımı" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <img src={asset(VIDEO_THUMB)} alt="Frozen Eyes video tanıtımı" loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 flex items-center justify-center z-20">
               <div className="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 relative">
                 <div className="absolute inset-0 rounded-full bg-white/35 animate-ping" />
@@ -58,7 +58,7 @@ export default function IntroVideo({ onPlay }: IntroVideoProps) {
               </div>
             </div>
             <div className="absolute bottom-4 left-4 z-20 bg-zinc-950 text-white font-mono text-[9px] tracking-widest font-bold uppercase px-3 py-1.5">
-              SÜRE: 2:45 DAKİKA
+              SÜRE: 0:34
             </div>
           </button>
         </div>
