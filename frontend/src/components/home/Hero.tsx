@@ -6,7 +6,13 @@ import Icon from '../ui/Icon';
 import { asset } from '../../lib/asset';
 
 // Hero ürün görseli — arka planı temizlenmiş, saydam (yalnızca cihazın görünen kısmı).
-const HERO_PRODUCT = 'assets/renders/hero-frozen-face-prox.webp';
+const HERO_PRODUCT = 'assets/renders/hero-frozen-face-prox-hq.webp';
+
+// Ürün sunum varyantı:
+//   'emerge'  → ürünün kesik/bitiş kenarı karanlığa doğru erir (gölgeden yükseliyormuş hissi), daha büyük.
+//   'classic' → önceki sunum (net kenar + cam yansıması).
+// Beğenilmezse yalnızca bu değeri 'classic' yaparak önceki sunuma dönülür.
+const HERO_VARIANT: 'emerge' | 'classic' = 'emerge';
 
 // Volumetrik his için ince partiküller (sabit konumlar — CLS/rasgelelik yok)
 const PARTICLES = [
@@ -42,6 +48,8 @@ export default function Hero({ onPlayVideo }: HeroProps) {
     mx.set(0);
     my.set(0);
   };
+
+  const emerge = HERO_VARIANT === 'emerge';
 
   return (
     <section
@@ -164,17 +172,23 @@ export default function Hero({ onPlayVideo }: HeroProps) {
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              className="w-[240px] sm:w-[330px] lg:w-[400px] xl:w-[460px] h-auto drop-shadow-[0_30px_45px_rgba(0,0,0,0.55)]"
+              className={
+                emerge
+                  ? 'w-[270px] sm:w-[370px] lg:w-[450px] xl:w-[530px] h-auto drop-shadow-[0_30px_50px_rgba(0,0,0,0.6)] [mask-image:linear-gradient(to_top,#000_40%,transparent_86%)] [-webkit-mask-image:linear-gradient(to_top,#000_40%,transparent_86%)]'
+                  : 'w-[240px] sm:w-[330px] lg:w-[400px] xl:w-[460px] h-auto drop-shadow-[0_30px_45px_rgba(0,0,0,0.55)]'
+              }
             />
-            {/* Cam hissi veren yumuşak yansıma */}
-            <div className="relative w-[240px] sm:w-[330px] lg:w-[400px] xl:w-[460px] -mt-2 h-16 sm:h-20 overflow-hidden pointer-events-none">
-              <img
-                src={asset(HERO_PRODUCT)}
-                alt=""
-                aria-hidden
-                className="w-full -scale-y-100 opacity-20 blur-[2px] [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.5),transparent)]"
-              />
-            </div>
+            {/* Cam hissi veren yumuşak yansıma (yalnızca classic) */}
+            {!emerge && (
+              <div className="relative w-[240px] sm:w-[330px] lg:w-[400px] xl:w-[460px] -mt-2 h-16 sm:h-20 overflow-hidden pointer-events-none">
+                <img
+                  src={asset(HERO_PRODUCT)}
+                  alt=""
+                  aria-hidden
+                  className="w-full -scale-y-100 opacity-20 blur-[2px] [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.5),transparent)]"
+                />
+              </div>
+            )}
             {/* Hafif sis */}
             <div aria-hidden className="absolute -bottom-2 w-[120%] h-24 bg-[radial-gradient(ellipse_at_center,rgba(56,189,248,0.10),transparent_70%)] blur-2xl" />
           </motion.div>
