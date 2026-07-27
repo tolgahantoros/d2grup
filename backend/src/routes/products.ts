@@ -11,7 +11,7 @@ const JSON_FIELDS = ['gallery', 'tags', 'features', 'indications', 'specs', 'var
 const CATEGORY_LABELS: Record<string, string> = {
   yuz: 'Yüz Teknolojileri',
   vucut: 'Vücut Teknolojileri',
-  longevity: 'Longevity',
+  longevity: 'LONGEVITY',
   global: 'Global Markalar',
 };
 
