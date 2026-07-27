@@ -1691,7 +1691,7 @@ export const PRODUCTS: Product[] = [
     "brand": "Capsule Cabin",
     "brandId": "capsule-cabin",
     "category": "longevity",
-    "categoryLabel": "Longevity",
+    "categoryLabel": "LONGEVITY",
     "tagline": "",
     "description": "",
     "image": "assets/products/capsule-cabin/main.jpg",

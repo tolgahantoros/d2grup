@@ -60,6 +60,6 @@ export const getCategory = (slug: string): Category | undefined =>
 export const CATEGORY_LABEL: Record<CategoryId, string> = {
   yuz: 'Yüz Bakım Cihazları',
   vucut: 'Bölgesel Vücut Şekillendirme',
-  longevity: 'Longevity',
+  longevity: 'LONGEVITY',
   global: 'Global Markalar',
 };

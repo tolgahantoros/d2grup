@@ -10,7 +10,7 @@ import Logo from './Logo';
 const DEVICE_CATS = [
   { slug: 'vucut', label: 'Bölgesel Vücut Şekillendirme' },
   { slug: 'yuz', label: 'Yüz Bakım' },
-  { slug: 'longevity', label: 'Longevity' },
+  { slug: 'longevity', label: 'LONGEVITY' },
 ];
 
 function isActive(item: NavMenuItem, pathname: string): boolean {

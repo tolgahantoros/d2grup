@@ -82,7 +82,7 @@ export const NAV: NavMenuItem[] = [
     children: [
       { label: 'Bölgesel Vücut Şekillendirme', to: '/urunler/kategori/vucut' },
       { label: 'Yüz Bakım', to: '/urunler/kategori/yuz' },
-      { label: 'Longevity', to: '/urunler/kategori/longevity' },
+      { label: 'LONGEVITY', to: '/urunler/kategori/longevity' },
     ],
   },
   { label: 'KOZMETİKLER', to: '/kozmetik' },
