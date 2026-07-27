@@ -38,23 +38,23 @@ export const SITE = {
     {
       id: 'satis',
       label: 'SATIŞ',
-      contactName: 'Mustafa',
-      phone: '+90 543 532 20 08',
-      phoneHref: 'tel:+905435322008',
-    },
-    {
-      id: 'teknik-destek',
-      label: 'TEKNİK DESTEK',
       contactName: 'Mercan',
       phone: '+90 533 273 06 03',
       phoneHref: 'tel:+905332730603',
     },
     {
+      id: 'teknik-destek',
+      label: 'TEKNİK DESTEK',
+      contactName: 'Mustafa',
+      phone: '+90 543 532 20 08',
+      phoneHref: 'tel:+905435322008',
+    },
+    {
       id: 'egitim',
       label: 'EĞİTİM',
-      contactName: '',
-      phone: '',
-      phoneHref: '',
+      contactName: 'Mercan',
+      phone: '+90 533 273 06 03',
+      phoneHref: 'tel:+905332730603',
     },
   ],
   // Sosyal medya hesapları — linkler daha sonra eklenecek (boş bırakıldı).
