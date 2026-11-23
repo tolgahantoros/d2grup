@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Check, ArrowRight, ShieldCheck, Headphones, GraduationCap, FileText, ChevronRight } from 'lucide-react';
@@ -8,6 +8,7 @@ import CtaBanner from '../components/sections/CtaBanner';
 import { LinkButton } from '../components/ui/Button';
 import { useCatalog } from '../data/DataContext';
 import { asset } from '../lib/asset';
+import { track } from '../lib/metaPixel';
 
 export default function ProductDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -15,6 +16,11 @@ export default function ProductDetailPage() {
   const product = slug ? getProduct(slug) : undefined;
   const [activeImg, setActiveImg] = useState(0);
   const [activeVariant, setActiveVariant] = useState(0);
+
+  const productName = product?.name;
+  useEffect(() => {
+    if (productName) track('ViewContent', { content_name: productName });
+  }, [productName]);
 
   if (!product) return <Navigate to="/urunler" replace />;
 

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { ArrowRight, CheckCircle2, Loader2 } from 'lucide-react';
 import { apiPost } from '../../lib/apiClient';
+import { track } from '../../lib/metaPixel';
 
 interface ContactFormProps {
   title?: string;
@@ -36,6 +37,7 @@ export default function ContactForm({
     setLoading(true);
     try {
       await apiPost('/contact', payload);
+      track('Lead');
       setSubmitted(true);
     } catch {
       // Backend yoksa (statik dağıtım) yine de başarı göster
